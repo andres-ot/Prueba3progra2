@@ -47,15 +47,18 @@
             <div class="col-md-12">
                 <h1>
                     Usuarios en el sistema
-                    
-                    
+                    <a href="/Prueba3progra2/views/users/new.jsp" class="pull-right btn btn-success">Crear Usuario</a>
                 </h1>
-                <br>
                 
-                    <a href="/Prueba3progra2/views/users/new.jsp" class="pull-right btn btn-success">Crear Usuario</a>    
-                    <form method="post" action="index.jsp">
-                        Buscar por Nombre:<input type="text" name="searchName" ><input type="submit" value="Buscar">
-                    </form>
+                <form method="post" action="index.jsp" class="form-inline">
+                    <div class="form-group">          
+                        <input type="text" name="searchName" placeholder="Buscar por nombre..." class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-success">Buscar</button>
+                </form> 
+                
+                       
+                    
                 <hr />
             </div>
             
@@ -71,6 +74,7 @@
                     
                     <tbody>
                     <%
+                        // por que hay querys aca!!! esto deberia ser de la clase usuario usuario.getAll() !!!
                             Connect con = new Connect();
                             if (request.getParameter("searchName") != null) {
                                 if (request.getParameter("searchName").isEmpty()) {
@@ -92,8 +96,8 @@
                                 out.println("<td>" + con.getResult().getString("user") + "</td>");
                                 out.println("<td>" + con.getResult().getString("birth_date") + "</td>");
                                 
-                                out.println("<td>" + "<a href='../../ServUser?delete=" + con.getResult().getString("user_id") + "' class='btn btn-danger'>Eliminar</a>" + "</td>");
-                                out.println("<td>" + "<a href='edit.jsp?edit=" + con.getResult().getString("user_id") + "' class='btn btn-primary'>Editar</a>" + "</td>");
+                                out.println("<td>" + "<a href='../../ServUser?delete=" + con.getResult().getString("user_id") + "' class='btn btn-xs btn-danger'>Eliminar</a>");
+                                out.println("<a href='edit.jsp?edit=" + con.getResult().getString("user_id") + "' class='btn btn-primary btn-xs'>Editar</a>" + "</td>");
 
                                 out.println("</tr>");
                             }
