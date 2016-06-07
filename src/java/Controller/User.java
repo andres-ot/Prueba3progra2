@@ -2,6 +2,8 @@
 package Controller;
 
 import Model.Connect;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class User {
     
@@ -57,5 +59,9 @@ public class User {
         this.state = State;
     }
     
-    
+    public ArrayList lfuser(){
+        con.setConsult("Select user form users where user='"+this.user+"'");
+        
+        return  ;
+    }
 }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import Controller.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,7 +35,17 @@ public class verifyLogin extends HttpServlet {
             String username = request.getParameter("username");
             String pass = request.getParameter("password");
             
-            out.println(username +" "+pass);
+            User user = new User();
+            user.setUser(username);
+            try{
+            if(!user.lfuser().next()){
+            
+            }
+            }catch (Exception ex){
+            
+            }
+            }
+            
         }
     }
 
