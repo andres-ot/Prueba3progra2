@@ -1,17 +1,16 @@
-
 package controller;
 
 import model.Connect;
 
 public class Author {
-    
+
     Connect con;
-    
-    public Author(){
+
+    public Author() {
         con = new Connect();
     }
-    
-    private int auth_id, nat_id; 
+
+    private int auth_id, nat_id;
     private String name, fname, lname, birth_date, state;
 
     public int getAuth_id() {
@@ -69,6 +68,26 @@ public class Author {
     public void setState(String state) {
         this.state = state;
     }
-    
-    
+
+    public void newElement() {
+        con.setInsert("INSERT into authors(name,apepat,apemat,birth_date,state,nationality_id) values('" + this.name + "','" + this.fname + "','" + this.lname + "','" + this.birth_date + "',1," + this.nat_id + ")");
+    }
+
+    public void delElement() {
+        con.setInsert("UPDATE authors set state=0 where author_id=" + this.auth_id + "");
+    }
+
+    public void updElement() {
+        con.setInsert("UPDATE authors set name='"+this.name+"',apepat='"+this.fname+"',apemat='"+this.lname+"',birth_date='"+this.birth_date+"',nationality_id="+this.nat_id+" where author_id="+this.auth_id+"");
+    }
+
+    /*create table authors (
+	author_id int(10) primary key auto_increment,
+	name varchar(40),
+	apepat varchar(30),
+	apemat varchar(30),
+	birth_date date,
+        state tinyint(1)
+);
+     */
 }

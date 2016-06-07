@@ -39,4 +39,16 @@ public class Nationality {
         this.state = state;
     }
     
+     public void newElement(){
+        con.setInsert("INSERT into nationalities(name,state) values('"+this.name+"',1)");
+    }
+    
+    public void delElement(){
+       con.setInsert("UPDATE nationalities set state=0 where nation_id="+this.nat_id+"");
+    }
+    
+    public void updElement(){
+        con.setInsert("UPDATE nationalities set name='"+this.name+"' where nation_id="+this.nat_id+"");
+    }
+    
 }

@@ -1,4 +1,3 @@
-
 package controller;
 
 import model.Connect;
@@ -10,11 +9,9 @@ public class Book {
     public Book() {
         con = new Connect();
     }
-    
+
     private int book_id, pages, auth_id, created_by;
     private String name, isbn, state, publish_date;
-    
-    
 
     public int getBook_id() {
         return book_id;
@@ -67,7 +64,7 @@ public class Book {
     public int getCreated_by() {
         return created_by;
     }
-    
+
     public void setCreated_by(int created_by) {
         this.created_by = created_by;
     }
@@ -79,6 +76,17 @@ public class Book {
     public void setPublish_date(String publish_date) {
         this.publish_date = publish_date;
     }
-    
-    
+
+    public void newElement() {
+        con.setInsert("INSERT into books(name,isbn,publish_date,pages,author_id,created_by,state) values('" + this.name + "','" + this.isbn + "','" + this.publish_date + "'," + this.pages + "," + this.auth_id + "," + this.created_by + ",1)");
+    }
+
+    public void delElement() {
+        con.setInsert("UPDATE books set state=0 where book_id=" + this.book_id + "");
+    }
+
+    public void updElement() {
+        con.setInsert("UPDATE books set name='" + this.name + "',isbn='" + this.isbn + "',publish_date='" + this.publish_date + "',pages=" + this.pages + ",author_id=" + this.auth_id + ",created_by=" + this.created_by + " where book_id=" + this.book_id + "");
+    }
+
 }
