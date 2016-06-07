@@ -27,14 +27,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Menu Principal</a>
+          <a class="navbar-brand" href="../../main.html">Menu Principal</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#contact">Usuarios</a></li>
-            <li><a href="#contact">Libros</a></li>
-            <li><a href="#contact">Autores</a></li>
-            <li><a href="#contact">Nacionalidades</a></li>
+            <li><a href="../users/index.jsp">Usuarios</a></li>
+                            <li><a href="../books/index.jsp">Libros</a></li>
+                            <li><a href="index.jsp">Autores</a></li>
+                            <li><a href="../nationalities/index.jsp">Nacionalidades</a></li>
             
           </ul>
         </div><!--/.nav-collapse -->
