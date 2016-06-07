@@ -44,12 +44,14 @@ public class verifyLogin extends HttpServlet {
                     response.sendRedirect("main.html");
                 }
                 else{
-                    out.println("Usuario/Contraseña Incorrecto");
+                    response.sendRedirect("login.jsp");
                     
                 }
             }
             else{
-                out.println("Usuario/Contraseña Incorrecto");
+               
+                response.sendRedirect("login.jsp");
+
             }
             
         }
