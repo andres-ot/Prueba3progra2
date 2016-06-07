@@ -16,6 +16,10 @@
         <servlet-name>ServAuthor</servlet-name>
         <servlet-class>ServAuthor</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>verifyLogin</servlet-name>
+        <servlet-class>verifyLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServUser</servlet-name>
         <url-pattern>/ServUser</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>ServAuthor</servlet-name>
         <url-pattern>/ServAuthor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>verifyLogin</servlet-name>
+        <url-pattern>/verifyLogin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
