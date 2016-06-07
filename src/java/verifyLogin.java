@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import Controller.User;
+import controller.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -37,13 +37,19 @@ public class verifyLogin extends HttpServlet {
             
             User user = new User();
             user.setUser(username);
-            try{
-            if(!user.lfuser().next()){
             
+            user.lfuser();
+            if (user.lfuser().contains(username)){
+                if(user.lfuser().contains(pass)){
+                    response.sendRedirect("main.html");
+                }
+                else{
+                    out.println("Usuario/Contraseña Incorrecto");
+                    
+                }
             }
-            }catch (Exception ex){
-            
-            }
+            else{
+                out.println("Usuario/Contraseña Incorrecto");
             }
             
         }
@@ -87,5 +93,5 @@ public class verifyLogin extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
+

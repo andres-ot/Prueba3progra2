@@ -3,7 +3,7 @@ create table users (
 	user varchar(20),
 	password varchar(20),
 	birth_date date,
-	status tinyint(1)
+	state tinyint(1)
 );
 
 create table books (
@@ -23,6 +23,7 @@ create table authors (
 	apepat varchar(30),
 	apemat varchar(30),
 	birth_date date,
+        state tinyint(1)
 );
 
 create table nationalities (
