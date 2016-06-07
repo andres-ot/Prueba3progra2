@@ -56,6 +56,11 @@
                 <form action="../../ServUser?edit=yes" method="post">
                     <div class="form-group">
                         <% while(con.getResult().next()){  %>
+                        <div>
+                            <caption>ID</caption>
+                            <input type="text" readonly="true" value='<% out.println(""+con.getResult().getString("user_id")); %>' name="id" class="form-control">
+                        </div>
+                         
                          <caption>Usuario</caption>
                          <input type="text" name="username" value='<% out.println(""+con.getResult().getString("user")); %>' class="form-control" >
                     </div>

@@ -70,7 +70,7 @@ public class User {
     }
     
     public void newElement(){
-        con.setInsert("INSERT into users(user,password,birth_date,state) VALUES('"+this.user+"','"+this.password+"',"+this.birth_date+", 1)");
+        con.setInsert("INSERT into users(user,password,birth_date,state) VALUES('"+this.user+"','"+this.password+"','"+this.birth_date+"', 1)");
     }
     
     public void delElement(){
@@ -78,7 +78,7 @@ public class User {
     }
     
     public void updElement(){
-        con.setInsert("UPDATE users set user='"+this.user+"' password='"+this.password+"' birth_date="+this.birth_date+" where user_id="+this.user_id+"");
+        con.setInsert("UPDATE users set user='"+this.user+"', password='"+this.password+"', birth_date='"+this.birth_date+"' where user_id='"+this.user_id+"'");
     }
 
 }

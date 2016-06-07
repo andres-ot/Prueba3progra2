@@ -47,7 +47,7 @@
             <div class="col-md-4 col-md-push-4">
                 <h1>Agregar usuario</h1>
                 <hr/>
-                <form action="/Prueba3progra2/createUser" method="post">
+                <form action="../../ServUser" method="post">
                     <div class="form-group">
                          <caption>Usuario</caption>
                          <input type="text" name="username" class="form-control" >

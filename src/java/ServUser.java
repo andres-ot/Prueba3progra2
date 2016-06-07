@@ -41,7 +41,8 @@ public class ServUser extends HttpServlet {
                 response.sendRedirect("views/users/index.jsp");
 
             } else if (request.getParameter("edit") != null) {
-                
+               
+               
                 int id = Integer.parseInt(request.getParameter("id"));
                 String username = request.getParameter("username");
                 String bdate = request.getParameter("birth_date");
