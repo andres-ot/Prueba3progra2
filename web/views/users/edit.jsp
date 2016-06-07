@@ -4,6 +4,7 @@
     Author     : andres
 --%>
 
+<%@page import="model.Connect"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -45,27 +46,34 @@
         <div class="row">
           
             <div class="col-md-4 col-md-push-4">
-                <h1>Agregar usuario</h1>
+                <h1>Editar usuario</h1>
                 <hr/>
-                <form action="/Prueba3progra2/createUser" method="post">
+                <% 
+                        int id=Integer.parseInt(request.getParameter("edit"));
+                        Connect con=new Connect ();
+                        con.setConsult("select * from users where user_id='"+id+"'");
+                    %>
+                <form action="../../ServUser?edit=yes" method="post">
                     <div class="form-group">
+                        <% while(con.getResult().next()){  %>
                          <caption>Usuario</caption>
-                         <input type="text" name="username" class="form-control" >
+                         <input type="text" name="username" value='<% out.println(""+con.getResult().getString("user")); %>' class="form-control" >
                     </div>
 
                     <div class="form-group">
                         <caption> Fecha de Nacimiento </caption>
-                        <input type="text" name="birth_date" class="form-control" >
+                        <input type="text" name="birth_date" value='<% out.println(""+con.getResult().getString("birth_date")); %>' class="form-control" >
                     </div>
 
                     <div class="form-group">
                         <caption>Contraseña</caption>
-                        <input type="text" name="password" class="form-control" >
+                        <input type="text" name="password" value='<% out.println(""+con.getResult().getString("password")); %>' class="form-control" >
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" value="Crear" class="btn btn-block btn-success" > 
+                        <input type="submit" value="Editar" class="btn btn-block btn-success" > 
                     </div>
+                    <% } %>
                 </form>
             </div>
         </div>

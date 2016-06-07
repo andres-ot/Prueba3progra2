@@ -78,7 +78,7 @@ public class User {
     }
     
     public void updElement(){
-        con.setInsert("UPDATE users set user='"+this.user+"',password='"+this.password+"',birth_date="+this.birth_date+" where user_id="+this.user_id+"");
+        con.setInsert("UPDATE users set user='"+this.user+"' password='"+this.password+"' birth_date="+this.birth_date+" where user_id="+this.user_id+"");
     }
 
 }

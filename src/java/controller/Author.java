@@ -81,13 +81,5 @@ public class Author {
         con.setInsert("UPDATE authors set name='"+this.name+"',apepat='"+this.fname+"',apemat='"+this.lname+"',birth_date='"+this.birth_date+"',nationality_id="+this.nat_id+" where author_id="+this.auth_id+"");
     }
 
-    /*create table authors (
-	author_id int(10) primary key auto_increment,
-	name varchar(40),
-	apepat varchar(30),
-	apemat varchar(30),
-	birth_date date,
-        state tinyint(1)
-);
-     */
+
 }
