@@ -47,12 +47,12 @@
             <div class="col-md-12">
                 <h1>
                     Usuarios en el sistema
-                    <a href="/Prueba3progra2/views/users/new.jsp" class="pull-right btn btn-success">Crear Usuario</a>
+                    
                     
                 </h1>
                 <br>
-                <br>
-                        
+                
+                    <a href="/Prueba3progra2/views/users/new.jsp" class="pull-right btn btn-success">Crear Usuario</a>    
                     <form method="post" action="index.jsp">
                         Buscar por Nombre:<input type="text" name="searchName" ><input type="submit" value="Buscar">
                     </form>

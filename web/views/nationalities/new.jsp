@@ -12,8 +12,8 @@
         <title>Prueba 3 Programacion 2</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet"> 
-        <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="/Prueba3progra2/assets/css/bootstrap.min.css" rel="stylesheet"> 
+        <link href="/Prueba3progra2/assets/css/bootstrap-theme.min.css" rel="stylesheet">
     </head>
     <body>
         <div>
@@ -42,8 +42,28 @@
     </nav>
         </div>
         <br><br><br>
-        <div>
-        <h1>Hello World!</h1>
+        <div class="container">
+        
+        <div class="row">
+          
+            <div class="col-md-4 col-md-push-4">
+                <h1>Agregar nacionalidad</h1>
+                <hr/>
+                <form action="../../ServNation" method="post">
+                    <div class="form-group">
+                         <caption>Nombre</caption>
+                         <input type="text" name="nationame" class="form-control" >
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="submit" value="Crear" class="btn btn-block btn-success" > 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+        
         <script type="text/javascript" src="assets/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="assets/bootstrap.min.js"></script>
     </body>

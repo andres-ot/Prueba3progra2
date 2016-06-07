@@ -3,6 +3,7 @@ package controller;
 import model.Connect;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class User {
@@ -65,20 +66,20 @@ public class User {
                 list.add(con.getResult().getString("password"));
             }
         } catch (Exception e) {
-            }
+        }
         return list;
     }
-    
-    public void newElement(){
-        con.setInsert("INSERT into users(user,password,birth_date,state) VALUES('"+this.user+"','"+this.password+"','"+this.birth_date+"', 1)");
+
+    public void newElement() {
+        con.setInsert("INSERT into users(user,password,birth_date,state) VALUES('" + this.user + "','" + this.password + "','" + this.birth_date + "', 1)");
     }
-    
-    public void delElement(){
-        con.setInsert("UPDATE users set state=0 where user_id="+this.user_id+"");
+
+    public void delElement() {
+        con.setInsert("UPDATE users set state=0 where user_id=" + this.user_id + "");
     }
-    
-    public void updElement(){
-        con.setInsert("UPDATE users set user='"+this.user+"', password='"+this.password+"', birth_date='"+this.birth_date+"' where user_id='"+this.user_id+"'");
+
+    public void updElement() {
+        con.setInsert("UPDATE users set user='" + this.user + "', password='" + this.password + "', birth_date='" + this.birth_date + "' where user_id='" + this.user_id + "'");
     }
 
 }

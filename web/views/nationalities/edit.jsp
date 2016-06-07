@@ -4,6 +4,7 @@
     Author     : andres
 --%>
 
+<%@page import="model.Connect"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,8 +13,8 @@
         <title>Prueba 3 Programacion 2</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet"> 
-        <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
+       <link href="/Prueba3progra2/assets/css/bootstrap.min.css" rel="stylesheet"> 
+        <link href="/Prueba3progra2/assets/css/bootstrap-theme.min.css" rel="stylesheet">
     </head>
     <body>
         <div>
@@ -40,9 +41,43 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+            <div class="container">
+        
+        <div class="row">
+            <br><br><br>
+            <div class="col-md-4 col-md-push-4">
+                <h1>Editar Nacion</h1>
+                <hr/>
+                <% 
+                        int id=Integer.parseInt(request.getParameter("edit"));
+                        Connect con=new Connect ();
+                        con.setConsult("select * from nationalities where nation_id='"+id+"'");
+                    %>
+                <form action="../../ServNation?edit=yes" method="post">
+                    <div class="form-group">
+                        <% while(con.getResult().next()){  %>
+                        <div>
+                            <caption>ID</caption>
+                            <input type="text" readonly="true" value='<% out.println(""+con.getResult().getString("nation_id")); %>' name="id" class="form-control">
+                        </div>
+                         
+                         <caption>Nombre</caption>
+                         <input type="text" name="nationame" value='<% out.println(""+con.getResult().getString("name")); %>' class="form-control" >
+                    </div>
+
+                    
+
+                    <div class="form-group">
+                        <input type="submit" value="Editar" class="btn btn-block btn-success" > 
+                    </div>
+                    <% } %>
+                </form>
+            </div>
+        </div>
+    </div>
         </div>
         <br><br><br>
-        <h1>Hello World!</h1>
+        
         <script type="text/javascript" src="assets/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="assets/bootstrap.min.js"></script>
     </body>
