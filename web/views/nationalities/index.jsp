@@ -1,3 +1,10 @@
+<%-- 
+    Document   : newuser
+    Created on : 7/06/2016, 01:24:00 AM
+    Author     : andres
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
     
@@ -34,24 +41,8 @@
       </div>
     </nav>
         </div>
-        <div>
-            <table class="table table-bordered table-hover">
-                <thead>
-                <br>
-                <br>
-                <br>
-                
-                <h2><p>Bienvenido al modulo principal</p></h2>
-                <th>Opciones:</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>asd</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
+        <br><br><br>
+        <h1>Hello World!</h1>
         <script type="text/javascript" src="assets/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="assets/bootstrap.min.js"></script>
     </body>
