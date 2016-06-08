@@ -32,7 +32,8 @@ public class ServUser extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             User usr = new User();
-
+            
+            
             
             if (request.getParameter("delete") != null) {
                 int eliminar_id = Integer.parseInt(request.getParameter("delete"));
@@ -68,7 +69,7 @@ public class ServUser extends HttpServlet {
                 response.sendRedirect("views/users/index.jsp");
 
             }
-
+            
         }
     }
 

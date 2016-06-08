@@ -97,4 +97,11 @@ public class User {
         return rs;
         
     }
+    public ResultSet showEdit() {
+        
+        con.setConsult("select * from users where user_id='"+this.user_id+"' and state=1");
+        ResultSet rs=con.getResult();
+        return rs;
+        
+    }
 }

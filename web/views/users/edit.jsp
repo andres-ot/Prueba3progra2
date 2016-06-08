@@ -4,7 +4,10 @@
     Author     : andres
 --%>
 
-<%@page import="model.Connect"%>
+
+<%@page import="java.sql.ResultSet"%>
+<%@page import="controller.User"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -55,29 +58,31 @@
                     <hr/>
                     <%
                         int id = Integer.parseInt(request.getParameter("edit"));
-                        Connect con = new Connect();
-                        con.setConsult("select * from users where user_id='" + id + "'");
+                        User usr = new User();
+                        usr.setUser_id(id);
+                        ResultSet filas = usr.showEdit();
+                        
                     %>
                     <form action="../../ServUser?edit=yes" method="post">
                         <div class="form-group">
-                            <% while (con.getResult().next()) {  %>
+                            <% while (filas.next()) {  %>
                             <div>
                                 <caption>ID</caption>
-                                <input type="text" readonly="true" value='<% out.println("" + con.getResult().getString("user_id")); %>' name="id" class="form-control">
+                                <input type="text" readonly="true" value='<% out.println("" + filas.getString("user_id")); %>' name="id" class="form-control">
                             </div>
 
                             <caption>Usuario</caption>
-                            <input type="text" name="username" value='<% out.println("" + con.getResult().getString("user")); %>' class="form-control" >
+                            <input type="text" name="username" value='<% out.println("" + filas.getString("user")); %>' class="form-control" >
                         </div>
 
                         <div class="form-group">
                             <caption> Fecha de Nacimiento </caption>
-                            <input type="text" name="birth_date" id="datepicker" value='<% out.println("" + con.getResult().getString("birth_date")); %>' class="form-control" >
+                            <input type="text" name="birth_date" id="datepicker" value='<% out.println("" + filas.getString("birth_date")); %>' class="form-control" >
                         </div>
 
                         <div class="form-group">
                             <caption>Contraseña</caption>
-                            <input type="text" name="password" value='<% out.println("" + con.getResult().getString("password")); %>' class="form-control" >
+                            <input type="text" name="password" value='<% out.println("" + filas.getString("password")); %>' class="form-control" >
                         </div>
 
                         <div class="form-group">
