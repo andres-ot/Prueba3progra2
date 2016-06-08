@@ -15,7 +15,15 @@ public class User {
     }
 
     private int user_id;
-    private String user, password, birth_date, state;
+    private String user, password, birth_date, state, sqlsent;
+
+    public String getSqlsent() {
+        return sqlsent;
+    }
+
+    public void setSqlsent(String sqlsent) {
+        this.sqlsent = sqlsent;
+    }
 
     public int getUser_id() {
         return user_id;
@@ -82,4 +90,11 @@ public class User {
         con.setInsert("UPDATE users set user='" + this.user + "', password='" + this.password + "', birth_date='" + this.birth_date + "' where user_id='" + this.user_id + "'");
     }
 
+    public ResultSet showAll() {
+        
+        con.setConsult(this.sqlsent);
+        ResultSet rs=con.getResult();
+        return rs;
+        
+    }
 }

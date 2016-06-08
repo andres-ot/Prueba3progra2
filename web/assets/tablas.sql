@@ -23,7 +23,8 @@ create table authors (
 	apepat varchar(30),
 	apemat varchar(30),
 	birth_date date,
-        state tinyint(1)
+        state tinyint(1),
+        nation_id int(10)
 );
 
 create table nationalities (

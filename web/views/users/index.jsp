@@ -4,7 +4,8 @@
     Author     : andres
 --%>
 
-<%@page import="model.Connect"%>
+<%@page import="controller.User"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -75,29 +76,29 @@
                     <tbody>
                     <%
                         // por que hay querys aca!!! esto deberia ser de la clase usuario usuario.getAll() !!!
-                            Connect con = new Connect();
+                            User usr = new User();
                             if (request.getParameter("searchName") != null) {
                                 if (request.getParameter("searchName").isEmpty()) {
-                                    con.setConsult("select * from users where state=1");
+                                    usr.setSqlsent("select * from users where state=1");
                                 } else {
 
                                     String name = request.getParameter("searchName");
-                                    con.setConsult("select * from users where user like '%" + name + "%' and state=1");
+                                    usr.setSqlsent("select * from users where user like '%" + name + "%' and state=1");
                                 }
                             } else {
-                                con.setConsult("select * from users where state=1");
+                                usr.setSqlsent("select * from users where state=1");
                             }
                         %>
                         <%
-                            //con.setConsulta("select Usuarios.usuario_id,Usuarios.nombre,Usuarios.apepat,Usuarios.apemat,Ciudades.nombre as ciudad from Usuarios,Ciudades where Usuarios.ciudad_id=Ciudades.ciudad_id and Usuarios.estado='Activo'");
-                            while (con.getResult().next()) {
+                            
+                            while (usr.showAll().next()) {
                                 out.println("<tr>");
-                                out.println("<td>" + con.getResult().getString("user_id") + "</td>");
-                                out.println("<td>" + con.getResult().getString("user") + "</td>");
-                                out.println("<td>" + con.getResult().getString("birth_date") + "</td>");
+                                out.println("<td>" + usr.showAll().getString("user_id") + "</td>");
+                                out.println("<td>" + usr.showAll().getString("user") + "</td>");
+                                out.println("<td>" + usr.showAll().getString("birth_date") + "</td>");
                                 
-                                out.println("<td>" + "<a href='../../ServUser?delete=" + con.getResult().getString("user_id") + "' class='btn btn-xs btn-danger'>Eliminar</a>");
-                                out.println("<a href='edit.jsp?edit=" + con.getResult().getString("user_id") + "' class='btn btn-primary btn-xs'>Editar</a>" + "</td>");
+                                out.println("<td>" + "<a href='../../ServUser?delete=" + usr.showAll().getString("user_id") + "' class='btn btn-xs btn-danger'>Eliminar</a>");
+                                out.println("<a href='edit.jsp?edit=" + usr.showAll().getString("user_id") + "' class='btn btn-primary btn-xs'>Editar</a>" + "</td>");
 
                                 out.println("</tr>");
                             }

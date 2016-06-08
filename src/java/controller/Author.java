@@ -70,7 +70,7 @@ public class Author {
     }
 
     public void newElement() {
-        con.setInsert("INSERT into authors(name,apepat,apemat,birth_date,state,nationality_id) values('" + this.name + "','" + this.fname + "','" + this.lname + "','" + this.birth_date + "',1," + this.nat_id + ")");
+        con.setInsert("INSERT into authors(name,apepat,apemat,birth_date,state,nation_id) values('" + this.name + "','" + this.fname + "','" + this.lname + "','" + this.birth_date + "',1," + this.nat_id + ")");
     }
 
     public void delElement() {
@@ -78,8 +78,7 @@ public class Author {
     }
 
     public void updElement() {
-        con.setInsert("UPDATE authors set name='"+this.name+"',apepat='"+this.fname+"',apemat='"+this.lname+"',birth_date='"+this.birth_date+"',nationality_id="+this.nat_id+" where author_id="+this.auth_id+"");
+        con.setInsert("UPDATE authors set name='" + this.name + "',apepat='" + this.fname + "',apemat='" + this.lname + "',birth_date='" + this.birth_date + "',nation_id=" + this.nat_id + " where author_id=" + this.auth_id + "");
     }
-
 
 }
