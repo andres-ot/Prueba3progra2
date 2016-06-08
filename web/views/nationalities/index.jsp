@@ -1,12 +1,10 @@
-<%-- 
-    Document   : newuser
-    Created on : 7/06/2016, 01:24:00 AM
-    Author     : andres
---%>
-
-<%@page import="model.Connect"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%@page import="controller.Nationality"%>
+<%@page import="java.sql.ResultSet"%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <html lang="es">
 
     <head>
@@ -55,9 +53,12 @@
                     <br>
 
                     <a href="/Prueba3progra2/views/nationalities/new.jsp" class="pull-right btn btn-success">Crear Nacionalidad</a>    
-                    <form method="post" action="index.jsp">
-                        Buscar por Nombre:<input type="text" name="searchName" ><input type="submit" value="Buscar">
-                    </form>
+                    <form method="post" action="index.jsp" class="form-inline">
+                        <div class="form-group">          
+                            <input type="text" name="searchName" placeholder="Buscar por nombre..." class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success">Buscar</button>
+                    </form> 
                     <hr />
 
                 </div>
@@ -73,28 +74,30 @@
                         </thead>
 
                         <tbody>
-                            <%
-                                Connect con = new Connect();
+                             <%
+                                Nationality nat = new Nationality();
+                                ResultSet filas;
+                                String name = request.getParameter("searchName");
+
                                 if (request.getParameter("searchName") != null) {
                                     if (request.getParameter("searchName").isEmpty()) {
-                                        con.setConsult("select * from nationalities where state=1");
+                                        filas = nat.showAll();
                                     } else {
 
-                                        String name = request.getParameter("searchName");
-                                        con.setConsult("select * from nationalities where name like '%" + name + "%' and state=1");
+                                        nat.setName(name);
+                                        filas = nat.showSearch();
                                     }
                                 } else {
-                                    con.setConsult("select * from nationalities where state=1");
+                                    filas = nat.showAll();
                                 }
-                            %>
-                            <%
-                                while (con.getResult().next()) {
+                            
+                                while (filas.next()) {
                                     out.println("<tr>");
-                                    out.println("<td>" + con.getResult().getString("nation_id") + "</td>");
-                                    out.println("<td>" + con.getResult().getString("name") + "</td>");
+                                    out.println("<td>" + filas.getString("nation_id") + "</td>");
+                                    out.println("<td>" + filas.getString("name") + "</td>");
 
-                                    out.println("<td>" + "<a href='../../ServNation?delete=" + con.getResult().getString("nation_id") + "' class='btn btn-danger'>Eliminar</a>" + "</td>");
-                                    out.println("<td>" + "<a href='edit.jsp?edit=" + con.getResult().getString("nation_id") + "' class='btn btn-primary'>Editar</a>" + "</td>");
+                                    out.println("<td>" + "<a href='../../ServNation?delete=" + filas.getString("nation_id") + "' class='btn btn-danger'>Eliminar</a>" + "</td>");
+                                    out.println("<td>" + "<a href='edit.jsp?edit=" + filas.getString("nation_id") + "' class='btn btn-primary'>Editar</a>" + "</td>");
 
                                     out.println("</tr>");
                                 }

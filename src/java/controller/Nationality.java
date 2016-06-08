@@ -1,6 +1,7 @@
 
 package controller;
 
+import java.sql.ResultSet;
 import model.Connect;
 
 public class Nationality {
@@ -51,4 +52,24 @@ public class Nationality {
         con.setInsert("UPDATE nationalities set name='"+this.name+"' where nation_id="+this.nat_id+"");
     }
     
+    public ResultSet showAll() {
+        
+        con.setConsult("select * from nationalities where state=1");
+        ResultSet rs=con.getResult();
+        return rs;
+        
+    }
+    public ResultSet showEdit() {
+        
+        con.setConsult("select * from nationalities where nation_id='"+this.nat_id+"' and state=1");
+        ResultSet rs=con.getResult();
+        return rs;
+        
+    }
+    public ResultSet showSearch(){
+    
+        con.setConsult("select * from nationalities where name like '%" + this.name + "%' and state=1");
+        ResultSet rs=con.getResult();
+        return rs;
+    }
 }
