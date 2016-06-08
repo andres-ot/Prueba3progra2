@@ -104,4 +104,11 @@ public class User {
         return rs;
         
     }
+    public ResultSet showSearch(){
+    
+        con.setConsult("select * from users where user like '%" + this.user + "%' and state=1");
+        ResultSet rs=con.getResult();
+        return rs;
+    }
+    
 }

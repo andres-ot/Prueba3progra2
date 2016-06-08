@@ -77,7 +77,24 @@
                         <tbody>
                             <%
                                 User usuario = new User();
-                                ResultSet filas = usuario.showAll();
+                                ResultSet filas;
+                                String user = request.getParameter("searchName");
+
+                                if (request.getParameter("searchName") != null) {
+                                    if (request.getParameter("searchName").isEmpty()) {
+                                        filas = usuario.showAll();
+                                    } else {
+
+                                        String name = request.getParameter("searchName");
+                                        usuario.setUser(name);
+                                        filas = usuario.showSearch();
+                                    }
+                                } else {
+                                    filas = usuario.showAll();
+                                }
+                            %>
+                            <%
+                                
 
                                 while (filas.next()) {
                                     out.println("<tr>");
