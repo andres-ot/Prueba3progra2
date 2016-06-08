@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="controller.User"%>
+<%@page import="java.sql.ResultSet"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -75,34 +76,20 @@
                     
                     <tbody>
                     <%
-                        // por que hay querys aca!!! esto deberia ser de la clase usuario usuario.getAll() !!!
-                            User usr = new User();
-                            if (request.getParameter("searchName") != null) {
-                                if (request.getParameter("searchName").isEmpty()) {
-                                    usr.setSqlsent("select * from users where state=1");
-                                } else {
+                       User usuario = new User();
+                       ResultSet filas = usuario.showAll();
+                       
+                       while( filas.next() )
+                       {
+                           out.println("<tr>");
+                           out.println("<td>"+filas.getString("user_id")+"</td>");
+                           out.println("<td>"+filas.getString("user")+"</td>");
+                           out.println("<td>"+filas.getString("birth_date")+"</td>");
+                           // tenis que hacer los botones denuevo :D
+                           out.println("</tr>");
 
-                                    String name = request.getParameter("searchName");
-                                    usr.setSqlsent("select * from users where user like '%" + name + "%' and state=1");
-                                }
-                            } else {
-                                usr.setSqlsent("select * from users where state=1");
-                            }
-                        %>
-                        <%
-                            
-                            while (usr.showAll().next()) {
-                                out.println("<tr>");
-                                out.println("<td>" + usr.showAll().getString("user_id") + "</td>");
-                                out.println("<td>" + usr.showAll().getString("user") + "</td>");
-                                out.println("<td>" + usr.showAll().getString("birth_date") + "</td>");
-                                
-                                out.println("<td>" + "<a href='../../ServUser?delete=" + usr.showAll().getString("user_id") + "' class='btn btn-xs btn-danger'>Eliminar</a>");
-                                out.println("<a href='edit.jsp?edit=" + usr.showAll().getString("user_id") + "' class='btn btn-primary btn-xs'>Editar</a>" + "</td>");
-
-                                out.println("</tr>");
-                            }
-                        %>
+                       }
+                    %>
                     </tbody>
                     
                 </table>

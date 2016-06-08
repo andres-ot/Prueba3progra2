@@ -92,7 +92,7 @@ public class User {
 
     public ResultSet showAll() {
         
-        con.setConsult(this.sqlsent);
+        con.setConsult("select * from users where state=1");
         ResultSet rs=con.getResult();
         return rs;
         
