@@ -77,7 +77,7 @@
                                     Book bk = new Book();
                                     ResultSet filas = bk.showAuths();
                                     while (filas.next()) {
-                                        out.println("<option  name='author_id' value=" + filas.getString("authors.author_id") + ">" + filas.getNString("authors.name") + "</option>");
+                                            out.println("<option  name='author_id' value=" + filas.getString("authors.author_id") + ">" + filas.getString("authors.name") + "</option>");
                                     }
                                 %>
 

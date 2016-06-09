@@ -61,7 +61,7 @@
                         Book bk = new Book();
                         bk.setBook_id(id);
                         ResultSet filas = bk.showEdit();
-                        int uid=Integer.parseInt(bk.createdBy().getString("user_id"));
+                        
                     %>
                     <form action="../../ServBook?edit=yes" method="post">
                         <div class="form-group">

@@ -30,7 +30,7 @@ public class ServBook extends HttpServlet {
                 int eliminar_id = Integer.parseInt(request.getParameter("delete"));
                 bk.setBook_id(eliminar_id);
                 bk.delElement();
-                response.sendRedirect("views/users/index.jsp");
+                response.sendRedirect("views/books/index.jsp");
 
             } else if (request.getParameter("edit") != null) {
                
@@ -60,13 +60,13 @@ public class ServBook extends HttpServlet {
                 String name = request.getParameter("name");
                 String pdate = request.getParameter("pdate");
                 String isbn = request.getParameter("isbn");
-                int author_id = Integer.parseInt(request.getParameter("author_id"));
+                String author_id = request.getParameter("author_id");
                 int pages = Integer.parseInt(request.getParameter("pages"));
                 String createdBy = request.getParameter("created_by");
                 
            
                 
-                bk.setAuth_id(author_id);
+                bk.setAuth_id(1);
                 bk.setCreated_by(createdBy);
                 bk.setIsbn(isbn);
                 bk.setPublish_date(pdate);

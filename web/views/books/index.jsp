@@ -84,7 +84,7 @@
                             <%
                                 Book bk = new Book();
                                 ResultSet filas;
-                                String user = request.getParameter("searchName");
+                                String bks = request.getParameter("searchName");
 
                                 if (request.getParameter("searchName") != null) {
                                     if (request.getParameter("searchName").isEmpty()) {
