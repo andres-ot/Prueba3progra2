@@ -113,7 +113,7 @@ public class Book {
     }
     public ResultSet showAuths() {
         
-        con.setConsult("select * from books,authors where authors.state=1");
+        con.setConsult("select b.name, b.isbn, b.pages, b.publish_date, a.namre as aut_name, a.apepta, a.apemant from books as b join left authors as a on b.author_id = a.author_id where b.state=1");
         ResultSet rs=con.getResult();
        
         return rs;
