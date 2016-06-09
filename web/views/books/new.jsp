@@ -1,7 +1,7 @@
 
 
 <%@page import="java.sql.ResultSet"%>
-<%@page import="controller.Book"%>
+<%@page import="controller.Author"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -74,8 +74,8 @@
                             <caption>Autor</caption>
                             <select name="author_id" class="form-control">
                                 <%
-                                    Book bk = new Book();
-                                    ResultSet filas = bk.showAuths();
+                                    Author bk = new Author();
+                                    ResultSet filas = bk.showAll();
                                     while (filas.next()) {
                                         out.println("<option  name='author_id' value=" + filas.getString("authors.author_id") + ">" + filas.getString("authors.name") + "</option>");
                                     }
