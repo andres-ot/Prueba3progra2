@@ -119,7 +119,7 @@ public class Book {
     }
     public ResultSet showAuths() {
         
-        con.setConsult("select * from books,authors where state=1");
+        con.setConsult("select * from books,authors where authors.state=1");
         ResultSet rs=con.getResult();
        
         return rs;

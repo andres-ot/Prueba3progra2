@@ -51,7 +51,7 @@
                 <div class="col-md-12">
                     <h1>
                         Libros en el sistema
-
+                        <% out.println(request.getAttribute("uname")); %>
                         <a href="/Prueba3progra2/views/books/new.jsp" class="pull-right btn btn-success">Crear Libro</a>
                     </h1>
 
