@@ -1,6 +1,7 @@
 import controller.Book;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -61,16 +62,17 @@ public class ServBook extends HttpServlet {
                 String isbn = request.getParameter("isbn");
                 int author_id = Integer.parseInt(request.getParameter("author_id"));
                 int pages = Integer.parseInt(request.getParameter("pages"));
-                String createdBy = request.getParameter("created_by");
+                String created_by = request.getParameter("created_by");
                 
+           
                 
                 bk.setAuth_id(author_id);
-                bk.setCreated_by(createdBy);
+                bk.setCreated_by(created_by);
                 bk.setIsbn(isbn);
                 bk.setPublish_date(pdate);
                 bk.setName(name);
                 bk.setPages(pages);
-                
+              
                 bk.newElement();
                 
                 response.sendRedirect("views/books/index.jsp");

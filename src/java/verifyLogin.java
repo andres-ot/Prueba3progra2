@@ -34,13 +34,15 @@ public class verifyLogin extends HttpServlet {
 
             User user = new User();
             user.setUser(username);
+            user.setPassword(pass);
 
             user.lfuser();
             if (user.lfuser().contains(username)) {
                 if (user.lfuser().contains(pass)) {
+                    HttpSession ses=request.getSession();
+                    ses.setAttribute("uname",username);  
                     response.sendRedirect("main.html");
-                    HttpSession session=request.getSession();
-                    session.setAttribute("",username);  
+                    
                 } else {
                     response.sendRedirect("login.jsp");
 

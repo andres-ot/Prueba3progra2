@@ -56,7 +56,7 @@ public class Nationality {
         
         con.setConsult("select * from nationalities where state=1");
         ResultSet rs=con.getResult();
-        try{rs.close();}catch(Exception e){}
+        
         return rs;
         
     }
@@ -64,7 +64,7 @@ public class Nationality {
         
         con.setConsult("select * from nationalities where nation_id='"+this.nat_id+"' and state=1");
         ResultSet rs=con.getResult();
-        try{rs.close();}catch(Exception e){}
+   
         return rs;
         
     }
@@ -72,7 +72,7 @@ public class Nationality {
     
         con.setConsult("select * from nationalities where name like '%" + this.name + "%' and state=1");
         ResultSet rs=con.getResult();
-        try{rs.close();}catch(Exception e){}
+     
         return rs;
     }
 }

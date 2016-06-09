@@ -77,12 +77,12 @@
                         
                         <div class="form-group">
                             <caption>Apellido Paterno</caption>
-                            <input type="text" name="password" value='<% out.println("" + filas.getString("apepat")); %>' class="form-control" >
+                            <input type="text" name="fname" value='<% out.println("" + filas.getString("apepat")); %>' class="form-control" >
                         </div>
                         
                         <div class="form-group">
                             <caption>Apellido Materno</caption>
-                            <input type="text" name="password" value='<% out.println("" + filas.getString("apemat")); %>' class="form-control" >
+                            <input type="text" name="lname" value='<% out.println("" + filas.getString("apemat")); %>' class="form-control" >
                         </div>
 
                         <div class="form-group">
@@ -98,7 +98,7 @@
                                         out.println("<option  name='nation_id' value="+filas.getString("nationalities.nation_id")+">"+filas.getNString("nationalities.name")+"</option>");
                                     }
                                 %>
-                                <option value="id">Nombre</option>
+                             
                             </select>
                         </div>
 

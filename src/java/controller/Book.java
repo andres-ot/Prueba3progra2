@@ -12,8 +12,18 @@ public class Book {
     }
 
     private int book_id, pages, auth_id;
-    private String name, isbn, state, publish_date, created_by;
+    private String name, isbn, state, publish_date, created_by, cby;
 
+    public String getCby() {
+        return cby;
+    }
+
+    public void setCby(String cby) {
+        this.cby = cby;
+    }
+
+    
+    
     public int getBook_id() {
         return book_id;
     }
@@ -95,15 +105,23 @@ public class Book {
         
         con.setConsult("select * from books where state=1");
         ResultSet rs=con.getResult();
-        try{rs.close();}catch(Exception e){}
+        
         return rs;
         
     }
     public ResultSet showEdit() {
         
-        con.setConsult("select * from books where book_id='"+this.book_id+"' and state=1");
+        con.setConsult("select * from books,authors where book_id='"+this.book_id+"' and state=1");
         ResultSet rs=con.getResult();
-        try{rs.close();}catch(Exception e){}
+       
+        return rs;
+        
+    }
+    public ResultSet showAuths() {
+        
+        con.setConsult("select * from books,authors where state=1");
+        ResultSet rs=con.getResult();
+       
         return rs;
         
     }
@@ -111,7 +129,13 @@ public class Book {
     
         con.setConsult("select * from books where name like '%" + this.name + "%' and state=1");
         ResultSet rs=con.getResult();
-        try{rs.close();}catch(Exception e){}
+      
+        return rs;
+    }
+    public ResultSet createdBy(){
+        con.setConsult("select * from users where name='"+this.cby+"' and state=1");
+        ResultSet rs=con.getResult();
+        
         return rs;
     }
 }
