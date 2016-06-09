@@ -11,8 +11,8 @@ public class Book {
         con = new Connect();
     }
 
-    private int book_id, pages, auth_id;
-    private String name, isbn, state, publish_date, created_by;
+    private int book_id, pages, auth_id,created_by;
+    private String name, isbn, state, publish_date;
 
     
 
@@ -66,11 +66,11 @@ public class Book {
         this.state = state;
     }
 
-    public String getCreated_by() {
+    public int getCreated_by() {
         return created_by;
     }
 
-    public void setCreated_by(String created_by) {
+    public void setCreated_by(int created_by) {
         this.created_by = created_by;
     }
 
