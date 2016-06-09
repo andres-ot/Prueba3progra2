@@ -47,7 +47,7 @@
                 <div class="col-md-4 col-md-push-4">
                     <h1>Agregar Libro</h1>
                     <hr/>
-                    <form action="../../ServAuthor" method="post">
+                    <form action="../../ServBook" method="post">
                         <div class="form-group">
                             <caption>Titulo</caption>
                             <input type="text" name="name" class="form-control" >
