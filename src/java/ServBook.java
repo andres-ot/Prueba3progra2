@@ -60,13 +60,11 @@ public class ServBook extends HttpServlet {
                 String name = request.getParameter("name");
                 String pdate = request.getParameter("pdate");
                 String isbn = request.getParameter("isbn");
-                String author_id = request.getParameter("author_id");
+                int author_id = Integer.parseInt(request.getParameter("author_id"));
                 int pages = Integer.parseInt(request.getParameter("pages"));
                 String createdBy = request.getParameter("created_by");
-                
-           
-                
-                bk.setAuth_id(1);
+                    
+                bk.setAuth_id(author_id);
                 bk.setCreated_by(createdBy);
                 bk.setIsbn(isbn);
                 bk.setPublish_date(pdate);
