@@ -70,7 +70,10 @@
                         </div>
                         <div class="form-group">
                             <caption>Nacionalidad</caption>
-                            <input type="text" name="nat_id" class="form-control" >
+                            <select name="nationality" class="form-control">
+                                <!-- aca va el while -->
+                                <option value="id">Nombre</option>
+                            </select>
                         </div>
 
 
