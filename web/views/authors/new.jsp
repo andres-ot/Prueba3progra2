@@ -72,7 +72,7 @@
                         </div>
                         <div class="form-group">
                             <caption>Nacionalidad</caption>
-                            <select name="nationality" class="form-control">
+                            <select name="nation_id" class="form-control">
                                 <% 
                                     Author auth = new Author();
                                     ResultSet filas = auth.showNations();

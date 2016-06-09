@@ -1,4 +1,4 @@
-import controller.Books;
+import controller.Book;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -21,42 +21,59 @@ public class ServBook extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            User usr = new User();
+                Book bk = new Book();
             
             
             
             if (request.getParameter("delete") != null) {
                 int eliminar_id = Integer.parseInt(request.getParameter("delete"));
-                usr.setUser_id(eliminar_id);
-                usr.delElement();
+                bk.setBook_id(eliminar_id);
+                bk.delElement();
                 response.sendRedirect("views/users/index.jsp");
 
             } else if (request.getParameter("edit") != null) {
                
                
                 int id = Integer.parseInt(request.getParameter("id"));
-                String username = request.getParameter("username");
-                String bdate = request.getParameter("birth_date");
-                String passwd = request.getParameter("password");
-                usr.setUser(username);
-                usr.setBirth_date(bdate);
-                usr.setPassword(passwd);
-                usr.setUser_id(id);
-                usr.updElement();
+                String name = request.getParameter("name");
+                String pdate = request.getParameter("publish_date");
+                String isbn = request.getParameter("isbn");
+                int author_id = Integer.parseInt(request.getParameter("author_id"));
+                int pages = Integer.parseInt(request.getParameter("pages"));
+                String createdBy = request.getParameter("created_by");
                 
-                response.sendRedirect("views/users/index.jsp");
+                bk.setBook_id(id);
+                bk.setAuth_id(author_id);
+                bk.setCreated_by(createdBy);
+                bk.setIsbn(isbn);
+                bk.setPublish_date(pdate);
+                bk.setName(name);
+                bk.setPages(pages);
+                
+                bk.updElement();
+                
+                response.sendRedirect("views/books/index.jsp");
             }
             else {
-                String username = request.getParameter("username");
-                String bdate = request.getParameter("birth_date");
-                String passwd = request.getParameter("password");
-                usr.setUser(username);
-                usr.setBirth_date(bdate);
-                usr.setPassword(passwd);
-                usr.newElement();
-
                 
-                response.sendRedirect("views/users/index.jsp");
+                String name = request.getParameter("name");
+                String pdate = request.getParameter("publish_date");
+                String isbn = request.getParameter("isbn");
+                int author_id = Integer.parseInt(request.getParameter("author_id"));
+                int pages = Integer.parseInt(request.getParameter("pages"));
+                String createdBy = request.getParameter("created_by");
+                
+                
+                bk.setAuth_id(author_id);
+                bk.setCreated_by(createdBy);
+                bk.setIsbn(isbn);
+                bk.setPublish_date(pdate);
+                bk.setName(name);
+                bk.setPages(pages);
+                
+                bk.newElement();
+                
+                response.sendRedirect("views/books/index.jsp");
 
             }
             

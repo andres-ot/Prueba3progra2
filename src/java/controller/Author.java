@@ -86,13 +86,15 @@ public class Author {
         
         con.setConsult("select * from authors where state=1");
         ResultSet rs=con.getResult();
+        try{rs.close();}catch(Exception e){}
         return rs;
         
     }
     public ResultSet showEdit() {
         
-        con.setConsult("select * from authors, nationalities where authors.author_id='"+this.auth_id+"' and nationalities.state=1 and authors.state=1");
+        con.setConsult("select * from authors, nationalities where authors.author_id='"+this.auth_id+"' and authors.state=1");
         ResultSet rs=con.getResult();
+        try{rs.close();}catch(Exception e){}
         return rs;
         
     }
@@ -100,13 +102,15 @@ public class Author {
     
         con.setConsult("select * from authors where name like '%" + this.name + "%' and state=1");
         ResultSet rs=con.getResult();
+        try{rs.close();}catch(Exception e){}
         return rs;
     }
     
     public ResultSet showNations(){
     
-        con.setConsult("select * from nationalities where state=1");
+        con.setConsult("select * from nationalities");
         ResultSet rs=con.getResult();
+        try{rs.close();}catch(Exception e){}
         return rs;
         
     }

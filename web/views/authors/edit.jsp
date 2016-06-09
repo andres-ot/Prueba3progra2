@@ -92,7 +92,7 @@
 
                         <div class="form-group">
                             <caption>Nacionalidad</caption>
-                            <select name="nationality" class="form-control">
+                            <select name="nation_id" class="form-control">
                                 <% 
                                     while(filas.next()){
                                         out.println("<option  name='nation_id' value="+filas.getString("nationalities.nation_id")+">"+filas.getNString("nationalities.name")+"</option>");

@@ -11,8 +11,8 @@ public class Book {
         con = new Connect();
     }
 
-    private int book_id, pages, auth_id, created_by;
-    private String name, isbn, state, publish_date;
+    private int book_id, pages, auth_id;
+    private String name, isbn, state, publish_date, created_by;
 
     public int getBook_id() {
         return book_id;
@@ -62,11 +62,11 @@ public class Book {
         this.state = state;
     }
 
-    public int getCreated_by() {
+    public String getCreated_by() {
         return created_by;
     }
 
-    public void setCreated_by(int created_by) {
+    public void setCreated_by(String created_by) {
         this.created_by = created_by;
     }
 
@@ -87,27 +87,31 @@ public class Book {
     }
 
     public void updElement() {
+        
         con.setInsert("UPDATE books set name='" + this.name + "',isbn='" + this.isbn + "',publish_date='" + this.publish_date + "',pages=" + this.pages + ",author_id=" + this.auth_id + ",created_by=" + this.created_by + " where book_id=" + this.book_id + "");
     }
     
     public ResultSet showAll() {
         
-        con.setConsult("select * from users where state=1");
+        con.setConsult("select * from books where state=1");
         ResultSet rs=con.getResult();
+        try{rs.close();}catch(Exception e){}
         return rs;
         
     }
     public ResultSet showEdit() {
         
-        con.setConsult("select * from users where user_id='"+this.user_id+"' and state=1");
+        con.setConsult("select * from books where book_id='"+this.book_id+"' and state=1");
         ResultSet rs=con.getResult();
+        try{rs.close();}catch(Exception e){}
         return rs;
         
     }
     public ResultSet showSearch(){
     
-        con.setConsult("select * from users where user like '%" + this.user + "%' and state=1");
+        con.setConsult("select * from books where name like '%" + this.name + "%' and state=1");
         ResultSet rs=con.getResult();
+        try{rs.close();}catch(Exception e){}
         return rs;
     }
 }

@@ -75,6 +75,7 @@ public class User {
             }
         } catch (Exception e) {
         }
+        try{con.getResult().close();}catch(Exception e){}
         return list;
     }
 
@@ -94,6 +95,7 @@ public class User {
         
         con.setConsult("select * from users where state=1");
         ResultSet rs=con.getResult();
+        try{rs.close();}catch(Exception e){}
         return rs;
         
     }
@@ -101,6 +103,7 @@ public class User {
         
         con.setConsult("select * from users where user_id='"+this.user_id+"' and state=1");
         ResultSet rs=con.getResult();
+        try{rs.close();}catch(Exception e){}
         return rs;
         
     }
@@ -108,6 +111,7 @@ public class User {
     
         con.setConsult("select * from users where user like '%" + this.user + "%' and state=1");
         ResultSet rs=con.getResult();
+        try{rs.close();}catch(Exception e){}
         return rs;
     }
     
