@@ -43,3 +43,5 @@ Todo el css y el javascript se encuentra local. (Bootstrap, jQuery, bootstrap-da
 ## Autores:
 1. Andres Otero
 2. Fabián Vásquez
+
+http://www.arquitecturajava.com/usando-java-session-en-aplicaciones-web/
