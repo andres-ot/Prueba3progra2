@@ -35,6 +35,7 @@ public class Connect {
             stmt = con.createStatement();
             stmt.executeQuery(sql);
             rs = stmt.getResultSet();
+            
         } catch (SQLException ex) {
         }
     }
@@ -47,6 +48,7 @@ public class Connect {
         try {
             stmt = con.createStatement();
             stmt.executeUpdate(sql);
+            
         } catch (SQLException ex) {
         }
 

@@ -63,7 +63,7 @@
                         ResultSet filas = auth.showEdit();
                         
                     %>
-                    <form action="../../ServAuth?edit=yes" method="post">
+                    <form action="../../ServAuthor?edit=yes" method="post">
                         <div class="form-group">
                             <% while (filas.next()) {  %>
                             <div>
@@ -92,7 +92,14 @@
 
                         <div class="form-group">
                             <caption>Nacionalidad</caption>
-                            <input type="text" name="nat_id" value='<% out.println("" + filas.getString("nation_id")); %>' class="form-control" >
+                            <select name="nationality" class="form-control">
+                                <% 
+                                    while(filas.next()){
+                                        out.println("<option  name='nation_id' value="+filas.getString("nationalities.nation_id")+">"+filas.getNString("nationalities.name")+"</option>");
+                                    }
+                                %>
+                                <option value="id">Nombre</option>
+                            </select>
                         </div>
 
                         <div class="form-group">

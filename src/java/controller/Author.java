@@ -91,7 +91,7 @@ public class Author {
     }
     public ResultSet showEdit() {
         
-        con.setConsult("select * from authors where author_id='"+this.auth_id+"' and state=1");
+        con.setConsult("select * from authors, nationalities where authors.author_id='"+this.auth_id+"' and nationalities.state=1 and authors.state=1");
         ResultSet rs=con.getResult();
         return rs;
         
@@ -102,4 +102,13 @@ public class Author {
         ResultSet rs=con.getResult();
         return rs;
     }
+    
+    public ResultSet showNations(){
+    
+        con.setConsult("select * from nationalities where state=1");
+        ResultSet rs=con.getResult();
+        return rs;
+        
+    }
+    
 }

@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class verifyLogin extends HttpServlet {
 
@@ -38,6 +39,8 @@ public class verifyLogin extends HttpServlet {
             if (user.lfuser().contains(username)) {
                 if (user.lfuser().contains(pass)) {
                     response.sendRedirect("main.html");
+                    HttpSession session=request.getSession();
+                    session.setAttribute("",username);  
                 } else {
                     response.sendRedirect("login.jsp");
 

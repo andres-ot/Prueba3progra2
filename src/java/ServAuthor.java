@@ -49,7 +49,7 @@ public class ServAuthor extends HttpServlet {
                 String fname = request.getParameter("fname");
                 String lname = request.getParameter("lname");
                 String bdate = request.getParameter("birth_date");
-                int nation_id = Integer.parseInt(request.getParameter("nat_id"));
+                int nation_id = Integer.parseInt(request.getParameter("nationality"));
                 auth.setName(name);
                 auth.setFname(fname);
                 auth.setLname(lname);
@@ -66,7 +66,7 @@ public class ServAuthor extends HttpServlet {
                 String fname = request.getParameter("fname");
                 String lname = request.getParameter("lname");
                 String bdate = request.getParameter("birth_date");
-                int nation_id = Integer.parseInt(request.getParameter("nat_id"));
+                int nation_id = Integer.parseInt(request.getParameter("nationality"));
                 auth.setName(name);
                 auth.setFname(fname);
                 auth.setLname(lname);

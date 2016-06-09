@@ -1,5 +1,7 @@
 
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="controller.Author"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -71,7 +73,13 @@
                         <div class="form-group">
                             <caption>Nacionalidad</caption>
                             <select name="nationality" class="form-control">
-                                <!-- aca va el while -->
+                                <% 
+                                    Author auth = new Author();
+                                    ResultSet filas = auth.showNations();
+                                    while(filas.next()){
+                                        out.println("<option  name='nation_id' value="+filas.getString("nation_id")+">"+filas.getNString("name")+"</option>");
+                                    }
+                                %>
                                 <option value="id">Nombre</option>
                             </select>
                         </div>
