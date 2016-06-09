@@ -12,15 +12,9 @@ public class Book {
     }
 
     private int book_id, pages, auth_id;
-    private String name, isbn, state, publish_date, created_by, cby;
+    private String name, isbn, state, publish_date, created_by;
 
-    public String getCby() {
-        return cby;
-    }
-
-    public void setCby(String cby) {
-        this.cby = cby;
-    }
+    
 
     
     
@@ -132,10 +126,5 @@ public class Book {
       
         return rs;
     }
-    public ResultSet createdBy(){
-        con.setConsult("select * from users where name='"+this.cby+"' and state=1");
-        ResultSet rs=con.getResult();
-        
-        return rs;
-    }
+    
 }

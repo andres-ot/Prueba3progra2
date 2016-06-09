@@ -86,7 +86,7 @@
 
                         <div class="form-group">
                             <caption> Agregado por </caption>
-                            <input type="text" readonly="true" name="created_by"  value='<% out.println(request.getAttribute("uname"));%>' class="form-control" >
+                            <input type="text" readonly="true" name="created_by"  value='<% out.println(session.getAttribute(""));%>' class="form-control" >
                         </div>
                         
                         <div class="form-group">
