@@ -1,5 +1,6 @@
 package controller;
 
+import java.sql.ResultSet;
 import model.Connect;
 
 public class Author {
@@ -81,4 +82,24 @@ public class Author {
         con.setInsert("UPDATE authors set name='" + this.name + "',apepat='" + this.fname + "',apemat='" + this.lname + "',birth_date='" + this.birth_date + "',nation_id=" + this.nat_id + " where author_id=" + this.auth_id + "");
     }
 
+    public ResultSet showAll() {
+        
+        con.setConsult("select * from authors where state=1");
+        ResultSet rs=con.getResult();
+        return rs;
+        
+    }
+    public ResultSet showEdit() {
+        
+        con.setConsult("select * from authors where author_id='"+this.auth_id+"' and state=1");
+        ResultSet rs=con.getResult();
+        return rs;
+        
+    }
+    public ResultSet showSearch(){
+    
+        con.setConsult("select * from authors where name like '%" + this.name + "%' and state=1");
+        ResultSet rs=con.getResult();
+        return rs;
+    }
 }

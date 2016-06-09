@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import controller.Author;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,16 +31,54 @@ public class ServAuthor extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServAuthor</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServAuthor at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            Author auth = new Author();
+            
+            
+            
+            if (request.getParameter("delete") != null) {
+                int eliminar_id = Integer.parseInt(request.getParameter("delete"));
+                auth.setAuth_id(eliminar_id);
+                auth.delElement();
+                response.sendRedirect("views/authors/index.jsp");
+
+            } else if (request.getParameter("edit") != null) {
+               
+               
+                int id = Integer.parseInt(request.getParameter("id"));
+                String name = request.getParameter("name");
+                String fname = request.getParameter("fname");
+                String lname = request.getParameter("lname");
+                String bdate = request.getParameter("birth_date");
+                int nation_id = Integer.parseInt(request.getParameter("nat_id"));
+                auth.setName(name);
+                auth.setFname(fname);
+                auth.setLname(lname);
+                auth.setBirth_date(bdate);
+                auth.setNat_id(nation_id);
+                auth.setAuth_id(id);
+                auth.updElement();
+                
+                response.sendRedirect("views/authors/index.jsp");
+            }
+            else {
+                
+                String name = request.getParameter("name");
+                String fname = request.getParameter("fname");
+                String lname = request.getParameter("lname");
+                String bdate = request.getParameter("birth_date");
+                int nation_id = Integer.parseInt(request.getParameter("nat_id"));
+                auth.setName(name);
+                auth.setFname(fname);
+                auth.setLname(lname);
+                auth.setBirth_date(bdate);
+                auth.setNat_id(nation_id);
+                auth.newElement();
+
+                
+                response.sendRedirect("views/authors/index.jsp");
+
+            }
+            
         }
     }
 

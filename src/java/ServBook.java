@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+import controller.Books;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -11,10 +6,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Administrador
- */
 public class ServBook extends HttpServlet {
 
     /**
@@ -30,16 +21,45 @@ public class ServBook extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServBook</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServBook at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            User usr = new User();
+            
+            
+            
+            if (request.getParameter("delete") != null) {
+                int eliminar_id = Integer.parseInt(request.getParameter("delete"));
+                usr.setUser_id(eliminar_id);
+                usr.delElement();
+                response.sendRedirect("views/users/index.jsp");
+
+            } else if (request.getParameter("edit") != null) {
+               
+               
+                int id = Integer.parseInt(request.getParameter("id"));
+                String username = request.getParameter("username");
+                String bdate = request.getParameter("birth_date");
+                String passwd = request.getParameter("password");
+                usr.setUser(username);
+                usr.setBirth_date(bdate);
+                usr.setPassword(passwd);
+                usr.setUser_id(id);
+                usr.updElement();
+                
+                response.sendRedirect("views/users/index.jsp");
+            }
+            else {
+                String username = request.getParameter("username");
+                String bdate = request.getParameter("birth_date");
+                String passwd = request.getParameter("password");
+                usr.setUser(username);
+                usr.setBirth_date(bdate);
+                usr.setPassword(passwd);
+                usr.newElement();
+
+                
+                response.sendRedirect("views/users/index.jsp");
+
+            }
+            
         }
     }
 

@@ -12,10 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Administrador
- */
 public class verifyLogin extends HttpServlet {
 
     /**
@@ -34,26 +30,24 @@ public class verifyLogin extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String username = request.getParameter("username");
             String pass = request.getParameter("password");
-            
+
             User user = new User();
             user.setUser(username);
-            
+
             user.lfuser();
-            if (user.lfuser().contains(username)){
-                if(user.lfuser().contains(pass)){
+            if (user.lfuser().contains(username)) {
+                if (user.lfuser().contains(pass)) {
                     response.sendRedirect("main.html");
-                }
-                else{
+                } else {
                     response.sendRedirect("login.jsp");
-                    
+
                 }
-            }
-            else{
-               
+            } else {
+
                 response.sendRedirect("login.jsp");
 
             }
-            
+
         }
     }
 
@@ -96,4 +90,3 @@ public class verifyLogin extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 }
-

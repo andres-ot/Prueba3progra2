@@ -1,5 +1,6 @@
 package controller;
 
+import java.sql.ResultSet;
 import model.Connect;
 
 public class Book {
@@ -88,5 +89,25 @@ public class Book {
     public void updElement() {
         con.setInsert("UPDATE books set name='" + this.name + "',isbn='" + this.isbn + "',publish_date='" + this.publish_date + "',pages=" + this.pages + ",author_id=" + this.auth_id + ",created_by=" + this.created_by + " where book_id=" + this.book_id + "");
     }
-
+    
+    public ResultSet showAll() {
+        
+        con.setConsult("select * from users where state=1");
+        ResultSet rs=con.getResult();
+        return rs;
+        
+    }
+    public ResultSet showEdit() {
+        
+        con.setConsult("select * from users where user_id='"+this.user_id+"' and state=1");
+        ResultSet rs=con.getResult();
+        return rs;
+        
+    }
+    public ResultSet showSearch(){
+    
+        con.setConsult("select * from users where user like '%" + this.user + "%' and state=1");
+        ResultSet rs=con.getResult();
+        return rs;
+    }
 }
