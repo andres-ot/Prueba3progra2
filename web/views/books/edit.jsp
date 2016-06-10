@@ -7,6 +7,8 @@
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="controller.Book"%>
+<%@page import="controller.Author"%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,11 +20,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/Prueba3progra2/assets/css/bootstrap.min.css" rel="stylesheet"> 
         <link href="/Prueba3progra2/assets/css/bootstrap-theme.min.css" rel="stylesheet">
-        <script>
-            $(function () {
-                $("#datepicker").datepicker();
-            });
-        </script>
     </head>
 
     <body style="padding-top:60px;">
@@ -94,9 +91,15 @@
                             <caption>Autor</caption>
                             <select name="author_id" class="form-control">
                                 <%
-                                    ResultSet auth = bk.showAuths();
+                                    Author a = new Author();
+                                    ResultSet auth = a.showAll();
                                     while (auth.next()) {
-                                        out.println("<option  name='author_id' value=" + filas.getString("authors.author_id") + ">" + filas.getNString("authors.name") + "</option>");
+                                        if ( filas.getString("author_id").equals(auth.getString("author_id") ) ){
+                                            out.println("<option selected value=" + auth.getString("author_id") + ">" + auth.getNString("name") + "</option>");
+
+                                        }else {
+                                            out.println("<option value=" + auth.getString("author_id") + ">" + auth.getNString("name") + "</option>");
+                                        }
                                     }
                                 %>
 
@@ -105,7 +108,7 @@
                                 
                         <div class="form-group">
                             <caption> Agregado por </caption>
-                            <input type="text" readonly="true" name="created_by"  value='<% filas.getString("created_by"); %>' class="form-control" >
+                            <input type="text" readonly="true" name="created_by"  value='<% filas.getString("user"); %>' class="form-control" >
                         </div>
 
                         <div class="form-group">
@@ -117,7 +120,19 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="assets/js/jquery-2.2.4.min.js"></script>
-        <script type="text/javascript" src="assets/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/Prueba3progra2/assets/js/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="/Prueba3progra2/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/Prueba3progra2/assets/js/moment-with-locales.min.js"></script>
+        <script type="text/javascript" src="/Prueba3progra2/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    locale: 'es',
+                    format: 'YYYY-MM-DD'
+                });
+            });
+        </script>
+        
     </body>
 </html>

@@ -105,7 +105,12 @@ public class Book {
     }
     public ResultSet showEdit() {
         
-        con.setConsult("select * from books,authors where book_id='"+this.book_id+"' and state=1");
+        String query = "SELECT b.author_id, b.name as book_name, b.isbn, b.pages, b.publish_date ";
+        String query2 ="c.user ";
+        String query3 = "from books as b left join users as c on c.user_id=b.created_by ";
+        String query4 = "where b.id ="+this.book_id;
+        //con.setConsult("select * from books,authors where book_id='"+this.book_id+"' and state=1");
+        con.setConsult(query+query2+query3+query4);
         ResultSet rs=con.getResult();
        
         return rs;
