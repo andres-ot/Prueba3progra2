@@ -94,7 +94,8 @@
                             <caption>Autor</caption>
                             <select name="author_id" class="form-control">
                                 <%
-                                    while (filas.next()) {
+                                    ResultSet auth = bk.showAuths();
+                                    while (auth.next()) {
                                         out.println("<option  name='author_id' value=" + filas.getString("authors.author_id") + ">" + filas.getNString("authors.name") + "</option>");
                                     }
                                 %>
