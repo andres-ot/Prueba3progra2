@@ -72,6 +72,7 @@ public class User {
             while (con.getResult().next()) {
                 list.add(con.getResult().getString("user"));
                 list.add(con.getResult().getString("password"));
+                list.add(con.getResult().getString("user_id"));
             }
         } catch (Exception e) {
         }

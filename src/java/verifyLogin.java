@@ -43,7 +43,9 @@ public class verifyLogin extends HttpServlet {
                     response.sendRedirect("main.html");
 
                     session = request.getSession();
-                    session.setAttribute("", username);
+                    session.setAttribute("username", username);                    
+                    session.setAttribute("user_id", user.lfuser().get(2));
+
 
                 } else {
                     response.sendRedirect("login.jsp");
