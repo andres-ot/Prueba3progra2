@@ -77,7 +77,7 @@
                                     Author bk = new Author();
                                     ResultSet filas = bk.showAll();
                                     while (filas.next()) {
-                                        out.println("<option  name='author_id' value=" + filas.getString("authors.author_id") + ">" + filas.getString("authors.name") + "</option>");
+                                        out.println("<option value=" + filas.getString("author_id") + ">" + filas.getString("name") + "</option>");
                                     }
                                 %>
 

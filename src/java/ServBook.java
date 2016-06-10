@@ -62,7 +62,7 @@ public class ServBook extends HttpServlet {
                 String isbn = request.getParameter("isbn");
                 int author_id = Integer.parseInt(request.getParameter("author_id"));
                 int pages = Integer.parseInt(request.getParameter("pages"));
-                //int createdBy = Integer.parseInt(request.getParameter("created_by"));
+                int createdBy = Integer.parseInt(request.getParameter("created_by"));
                     
                 bk.setAuth_id(author_id);
                 bk.setCreated_by(1);
