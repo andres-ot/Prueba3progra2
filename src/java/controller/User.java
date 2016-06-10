@@ -67,7 +67,7 @@ public class User {
 
     public List lfuser() {
         List<String> list = new ArrayList<>();
-        con.setConsult("select user,password from users where user='" + this.user + "'");
+        con.setConsult("select user,password, user_id from users where user='" + this.user + "'");
         try {
             while (con.getResult().next()) {
                 list.add(con.getResult().getString("user"));
