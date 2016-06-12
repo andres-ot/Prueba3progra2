@@ -96,8 +96,10 @@
                                     out.println("<td>" + filas.getString("nation_id") + "</td>");
                                     out.println("<td>" + filas.getString("name") + "</td>");
 
-                                    out.println("<td>" + "<a href='../../ServNation?delete=" + filas.getString("nation_id") + "' class='btn btn-danger'>Eliminar</a>" + "</td>");
-                                    out.println("<td>" + "<a href='edit.jsp?edit=" + filas.getString("nation_id") + "' class='btn btn-primary'>Editar</a>" + "</td>");
+                                    out.println("<td>");
+                                    out.println("<a href='../../ServNation?delete=" + filas.getString("nation_id") + "' class='btn btn-danger btn-xs'>Eliminar</a>");
+                                    out.println("<a href='edit.jsp?edit=" + filas.getString("nation_id") + "' class='btn btn-primary btn-xs'>Editar</a>");
+                                    out.println("</td>");
 
                                     out.println("</tr>");
                                 }
