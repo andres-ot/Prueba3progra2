@@ -100,7 +100,8 @@ public class Author {
     }
     public ResultSet showSearch(){
     
-        con.setConsult("select * from authors where name like '%" + this.name + "%' and state=1");
+        //con.setConsult("select * from authors where name like '%" + this.name + "%' and state=1");
+        con.setConsult("select a.name, a.apepat, a.apemat, a.author_id, a.birth_date, n.name as nation from authors as a left join nationalities as n on n.nation_id=a.nation_id where a.name like '%" + this.name + "%' and a.state=1");
         ResultSet rs=con.getResult();
         
         return rs;
