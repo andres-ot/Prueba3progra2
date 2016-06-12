@@ -92,7 +92,7 @@ public class Book {
 
     public void updElement() {
         
-        con.setInsert("UPDATE books set name='" + this.name + "',isbn='" + this.isbn + "',publish_date='" + this.publish_date + "',pages=" + this.pages + ",author_id=" + this.auth_id + ",created_by=" + this.created_by + " where book_id=" + this.book_id + "");
+        con.setInsert("UPDATE books set isbn='"+this.isbn+"', name='"+this.name+"', pages='"+this.pages+"', publish_date='"+this.publish_date+"' where book_id=" + this.book_id);
     }
     
     public ResultSet showAll() {
@@ -105,12 +105,7 @@ public class Book {
     }
     public ResultSet showEdit() {
         
-        String query = "SELECT b.author_id, b.name as book_name, b.isbn, b.pages, b.publish_date ";
-        String query2 ="c.user ";
-        String query3 = "from books as b left join users as c on c.user_id=b.created_by ";
-        String query4 = "where b.id ="+this.book_id;
-        //con.setConsult("select * from books,authors where book_id='"+this.book_id+"' and state=1");
-        con.setConsult(query+query2+query3+query4);
+        con.setConsult("select * from books where book_id='"+this.book_id+"' and state=1");
         ResultSet rs=con.getResult();
        
         return rs;
@@ -126,7 +121,9 @@ public class Book {
     }
     public ResultSet showSearch(){
     
-        con.setConsult("select * from books where name like '%" + this.name + "%' and state=1");
+        //con.setConsult("select * from books where name like '%" + this.name + "%' and state=1");
+        con.setConsult("select b.book_id, b.name, b.isbn, b.pages, b.publish_date, a.name as auname, a.apepat as auapepat, a.apemat as auapemat, u.user as created_by from books as b left join authors as a on a.author_id=b.author_id left join users as u on u.user_id=b.created_by where b.name like '%" + this.name + "%' and b.state=1");
+
         ResultSet rs=con.getResult();
       
         return rs;

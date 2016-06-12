@@ -18,8 +18,9 @@
         <title>Prueba 3 Programacion 2</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/Prueba3progra2/assets/css/bootstrap.min.css" rel="stylesheet"> 
-        <link href="/Prueba3progra2/assets/css/bootstrap-theme.min.css" rel="stylesheet">
+         <link href="/Prueba3progra2/assets/css/bootstrap.min.css" rel="stylesheet"> 
+        <link href="/Prueba3progra2/assets/css/bootstrap-theme.min.css" rel="stylesheet">        
+        <link href="/Prueba3progra2/assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     </head>
 
     <body style="padding-top:60px;">
@@ -58,64 +59,61 @@
                         Book bk = new Book();
                         bk.setBook_id(id);
                         ResultSet filas = bk.showEdit();
+                        Author autor = new Author();
+                        ResultSet autores = autor.showAll();
                         
-                    %>
+                        while (filas.next()) {
+                    %>   
                     <form action="../../ServBook?edit=yes" method="post">
                         <div class="form-group">
-                            <% while (filas.next()) {  %>
                             <div>
                                 <caption>ID</caption>
                                 <input type="text" readonly="true" value='<% out.println("" + filas.getString("book_id")); %>' name="id" class="form-control">
                             </div>
-
+                        </div>
+                            
+                        <div class="form-group">
                             <caption>Nombre</caption>
                             <input type="text" name="name" value='<% out.println("" + filas.getString("name")); %>' class="form-control" >
                         </div>
-
+                        
                         <div class="form-group">
-                            <caption>ISBN</caption>
-                            <input type="text" name="isbn" value='<% out.println("" + filas.getString("isbn")); %>' class="form-control" >
-                        </div>
+                          <caption>ISBN</caption>
+                          <input type="text" name="isbn" value='<% out.println("" + filas.getString("isbn")); %>' class="form-control" >
+                      </div>
 
-                        <div class="form-group">
-                            <caption>Paginas</caption>
-                            <input type="text" name="pages" value='<% out.println("" + filas.getString("pages")); %>' class="form-control" >
-                        </div>
+                      <div class="form-group">
+                          <caption>Paginas</caption>
+                          <input type="text" name="pages" value='<% out.println("" + filas.getString("pages")); %>' class="form-control" >
+                      </div>
 
-                        <div class="form-group">
-                            <caption> Fecha de Publicacion </caption>
-                            <input type="text" name="pdate" id="datepicker" value='<% out.println("" + filas.getString("publish_date")); %>' class="form-control" >
+         
+                    <div class="form-group">
+                        <caption>Fecha de Publicacion</caption>
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" name="pdate" value='<% out.println("" + filas.getString("publish_date")); %>'/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
                         </div>
-
-                        <div class="form-group">
-                            <caption>Autor</caption>
-                            <select name="author_id" class="form-control">
-                                <%
-                                    Author a = new Author();
-                                    ResultSet auth = a.showAll();
-                                    while (auth.next()) {
-                                        if ( filas.getString("author_id").equals(auth.getString("author_id") ) ){
-                                            out.println("<option selected value=" + auth.getString("author_id") + ">" + auth.getNString("name") + "</option>");
-
-                                        }else {
-                                            out.println("<option value=" + auth.getString("author_id") + ">" + auth.getNString("name") + "</option>");
-                                        }
-                                    }
-                                %>
-
-                            </select>
-                        </div>
-                                
-                        <div class="form-group">
-                            <caption> Agregado por </caption>
-                            <input type="text" readonly="true" name="created_by"  value='<% filas.getString("user"); %>' class="form-control" >
-                        </div>
-
-                        <div class="form-group">
-                            <input type="submit" value="Editar" class="btn btn-block btn-success" > 
-                        </div>
-                        <% }%>
+                    </div>
+                 
+                      
+                      <div class="form-group">
+                          <caption> Autor </caption>
+                          <select name="author_id" class="form-control">
+                              <% while( autores.next() ) { %>
+                              <option value='<% out.print(autores.getString("author_id"));%>'><% out.print(autores.getString("name")+" "+autores.getString("apepat")+" "+autores.getString("apemat"));%></option>
+                              <% } %>
+                          </select>
+                      </div>
+                          
+                          <div class="form-group">
+                              <input type="submit" value="Guardar" class="btn btn-block btn-success">
+                          </div>
+                      
                     </form>
+                    <% } %>
                 </div>
             </div>
         </div>

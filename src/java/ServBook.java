@@ -22,9 +22,8 @@ public class ServBook extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-                Book bk = new Book();
-            
-            
+                
+            Book bk = new Book();     
             
             if (request.getParameter("delete") != null) {
                 int eliminar_id = Integer.parseInt(request.getParameter("delete"));
@@ -32,20 +31,19 @@ public class ServBook extends HttpServlet {
                 bk.delElement();
                 response.sendRedirect("views/books/index.jsp");
 
-            } else if (request.getParameter("edit") != null) {
-               
+            } 
+            
+            else if (request.getParameter("edit") != null) {
                
                 int id = Integer.parseInt(request.getParameter("id"));
                 String name = request.getParameter("name");
-                String pdate = request.getParameter("publish_date");
+                String pdate = request.getParameter("pdate");
                 String isbn = request.getParameter("isbn");
                 int author_id = Integer.parseInt(request.getParameter("author_id"));
                 int pages = Integer.parseInt(request.getParameter("pages"));
-                int createdBy = Integer.parseInt(request.getParameter("created_by"));
                 
                 bk.setBook_id(id);
                 bk.setAuth_id(author_id);
-                bk.setCreated_by(createdBy);
                 bk.setIsbn(isbn);
                 bk.setPublish_date(pdate);
                 bk.setName(name);
