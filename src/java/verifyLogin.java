@@ -28,7 +28,7 @@ public class verifyLogin extends HttpServlet {
         throws ServletException, IOException {
             response.setContentType("text/html;charset=UTF-8");
         
-            try (PrintWriter out = response.getWriter()) {
+            try (PrintWriter out = response.getWriter() ) {
             
             String username = request.getParameter("username");
             String pass = request.getParameter("password");
@@ -53,9 +53,7 @@ public class verifyLogin extends HttpServlet {
                     response.sendRedirect("login.jsp");
                 }
             } else {
-
                 response.sendRedirect("login.jsp");
-
             }
 
         }

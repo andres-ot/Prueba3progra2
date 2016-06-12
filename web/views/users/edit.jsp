@@ -17,12 +17,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/Prueba3progra2/assets/css/bootstrap.min.css" rel="stylesheet"> 
-        <link href="/Prueba3progra2/assets/css/bootstrap-theme.min.css" rel="stylesheet">
-        <script>
-            $(function () {
-                $("#datepicker").datepicker();
-            });
-        </script>
+        <link href="/Prueba3progra2/assets/css/bootstrap-theme.min.css" rel="stylesheet">        
+        <link href="/Prueba3progra2/assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     </head>
 
     <body style="padding-top:60px;">
@@ -74,10 +70,15 @@
                             <caption>Usuario</caption>
                             <input type="text" name="username" value='<% out.println("" + filas.getString("user")); %>' class="form-control" >
                         </div>
-
+                        
                         <div class="form-group">
-                            <caption> Fecha de Nacimiento </caption>
-                            <input type="text" name="birth_date" id="datepicker" value='<% out.println("" + filas.getString("birth_date")); %>' class="form-control" >
+                            <caption>Fecha de Nacimiento</caption>
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input value='<% out.println("" + filas.getString("birth_date")); %>' type='text' class="form-control" name="birth_date" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -94,7 +95,18 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="assets/js/jquery-2.2.4.min.js"></script>
-        <script type="text/javascript" src="assets/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/Prueba3progra2/assets/js/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="/Prueba3progra2/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/Prueba3progra2/assets/js/moment-with-locales.min.js"></script>
+        <script type="text/javascript" src="/Prueba3progra2/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    locale: 'es',
+                    format: 'YYYY-MM-DD'
+                });
+            });
+        </script>
     </body>
 </html>
