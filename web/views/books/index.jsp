@@ -78,6 +78,7 @@
                         <th>Autor</th>
                         <th>Fecha de publicacion</th>
                         <th>Agregado por</th>
+                        <th>Acciones</th>
                         </thead>
 
                         <tbody>
@@ -106,11 +107,11 @@
                                     out.println("<td>" + filas.getString("name") + "</td>");
                                     out.println("<td>" + filas.getString("isbn") + "</td>");
                                     out.println("<td>" + filas.getString("pages") + "</td>");
-                                    out.println("<td>" + filas.getString("author_id") + "</td>");
+                                    out.println("<td>" + filas.getString("auname") +" "+ filas.getString("auapepat")+" "+filas.getString("auapemat")+"</td>");
                                     out.println("<td>" + filas.getString("publish_date") + "</td>");
                                     out.println("<td>" + filas.getString("created_by") + "</td>");
-                                    out.println("<td>" + "<a href='../../ServBook?delete=" + filas.getString("book_id") + "' class='btn btn-danger'>Eliminar</a>" + "</td>");
-                                    out.println("<td>" + "<a href='edit.jsp?edit=" + filas.getString("book_id") + "' class='btn btn-primary'>Editar</a>" + "</td>");
+                                    out.println("<td><a href='../../ServBook?delete=" + filas.getString("book_id") + "' class='btn btn-xs btn-danger'>Eliminar</a>");
+                                    out.println("<a href='edit.jsp?edit=" + filas.getString("book_id") + "' class='btn btn-xs btn-primary'>Editar</a></td>");
 
                                     out.println("</tr>");
 

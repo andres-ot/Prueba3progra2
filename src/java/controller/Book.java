@@ -97,7 +97,7 @@ public class Book {
     
     public ResultSet showAll() {
         
-        con.setConsult("select * from books where state=1");
+        con.setConsult("select b.book_id, b.name, b.isbn, b.pages, b.publish_date, a.name as auname, a.apepat as auapepat, a.apemat as auapemat, u.user as created_by from books as b left join authors as a on a.author_id=b.author_id left join users as u on u.user_id=b.created_by where b.state=1");
         ResultSet rs=con.getResult();
         
         return rs;
