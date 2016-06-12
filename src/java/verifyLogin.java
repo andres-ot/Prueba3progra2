@@ -25,31 +25,32 @@ public class verifyLogin extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+        throws ServletException, IOException {
+            response.setContentType("text/html;charset=UTF-8");
+        
+            try (PrintWriter out = response.getWriter()) {
+            
             String username = request.getParameter("username");
             String pass = request.getParameter("password");
 
             User user = new User();
             user.setUser(username);
             user.setPassword(pass);
-            HttpSession session;
             user.lfuser();
+            
             if (user.lfuser().contains(username)) {
+                
                 if (user.lfuser().contains(pass)) {
 
-                    response.sendRedirect("main.html");
-
+                    HttpSession session;            
                     session = request.getSession();
                     session.setAttribute("username", username);                    
                     session.setAttribute("user_id", user.lfuser().get(2));
+                    response.sendRedirect("main.html");
 
 
                 } else {
                     response.sendRedirect("login.jsp");
-
                 }
             } else {
 
