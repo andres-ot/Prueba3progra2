@@ -69,6 +69,20 @@
                             <caption>Contraseña</caption>
                             <input type="text" name="password" class="form-control" >
                         </div>
+                        
+                        <div class="form-group">
+                            <caption>Pais</caption>
+                            <select id="pais" name="pais" class="form-control">
+                                
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <caption>Ciudad</caption>
+                            <select id="ciudad" name="ciudad" class="form-control">
+                                
+                            </select>
+                        </div>
 
                         <div class="form-group">
                             <input type="submit" value="Crear" class="btn btn-block btn-success" > 
