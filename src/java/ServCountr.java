@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import controller.Country;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,16 +31,37 @@ public class ServCountr extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServCountr</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServCountr at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+          
+            Country con = new Country();
+
+            if (request.getParameter("delete") != null) {
+                int eliminar_id = Integer.parseInt(request.getParameter("delete"));
+                con.setCountry_id(eliminar_id);
+                con.delElement();
+                response.sendRedirect("views/countries/index.jsp");
+
+            } else if (request.getParameter("edit") != null) {
+
+                int id = Integer.parseInt(request.getParameter("id"));
+                String cname = request.getParameter("cname");
+
+                con.setName(cname);
+
+                con.setCountry_id(id);
+                con.updElement();
+
+                response.sendRedirect("views/countries/index.jsp");
+            } else {
+                String cname = request.getParameter("cname");
+
+                con.setName(cname);
+
+                con.newElement();
+
+                response.sendRedirect("views/countries/index.jsp");
+
+            }
+       
         }
     }
 

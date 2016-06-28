@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import controller.City;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,16 +31,36 @@ public class ServCity extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServCity</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServCity at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            City cit = new City();
+
+            if (request.getParameter("delete") != null) {
+                int eliminar_id = Integer.parseInt(request.getParameter("delete"));
+                cit.setCity_id(eliminar_id);
+                cit.delElement();
+                response.sendRedirect("views/cities/index.jsp");
+
+            } else if (request.getParameter("edit") != null) {
+
+                int id = Integer.parseInt(request.getParameter("id"));
+                String ciname = request.getParameter("ciname");
+
+               cit.setName(ciname);
+
+                cit.setCity_id(id);
+                cit.updElement();
+
+                response.sendRedirect("views/cities/index.jsp");
+            } else {
+                String natname = request.getParameter("ciname");
+                int count_id = Integer.parseInt(request.getParameter("country_id"));
+
+                cit.setName(natname);
+                cit.setCountry_id(count_id);
+                cit.newElement();
+
+                response.sendRedirect("views/cities/index.jsp");
+
+            }
         }
     }
 
