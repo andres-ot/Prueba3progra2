@@ -48,10 +48,20 @@ public class Connect {
         try {
             stmt = con.createStatement();
             stmt.executeUpdate(sql);
+            this.cerrar();
             
         } catch (SQLException ex) {
         }
 
+    }
+    
+    public void cerrar()
+    {
+        try {
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

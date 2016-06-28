@@ -6,12 +6,15 @@
 package controller;
 
 import java.sql.ResultSet;
+import model.Connect;
 
 /**
  *
  * @author fabian
  */
 public class Pais {
+    private Connect con;
+  
     private int pais_id, creado_por;
     private String nombre, estado;
 
@@ -62,9 +65,11 @@ public class Pais {
         
     }
     
-    public ResultSet getAll()
-    {
-        ResultSet rs = null;
+    public ResultSet getAll() {
+        con = new Connect();
+        con.setConsult("select p.nombre, p.pais_id, p.estado, u.user as creador from paises as p left join users as u on u.user_id=p.creado_por");
+        ResultSet rs=con.getResult();
         return rs;
+        
     }
 }
