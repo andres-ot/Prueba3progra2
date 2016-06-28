@@ -101,6 +101,7 @@
                                     out.println("<td>" + filas.getString("user_id") + "</td>");
                                     out.println("<td>" + filas.getString("user") + "</td>");
                                     out.println("<td>" + filas.getString("birth_date") + "</td>");
+                                    out.println("<td>" + filas.getString("city_id") + "</td>");
                                     
                                     out.print("<td>");
                                     out.print("<a href='../../ServUser?delete=" + filas.getString("user_id") + "' class='btn btn-xs btn-danger'>Eliminar</a>");

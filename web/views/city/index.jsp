@@ -4,8 +4,10 @@
     Author     : fabian
 --%>
 
+<%@page import="controller.City"%>
+
 <%@page import="java.sql.ResultSet"%>
-<%@page import="controller.Pais"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -62,31 +64,31 @@
                     </thead>
                     <tbody>
                          <%
-                                Pais nat = new Pais();
+                                City nat = new City();
                                 ResultSet filas = null;
                                 String name = request.getParameter("searchName");
 
                                 if (request.getParameter("searchName") != null) {
                                     if (request.getParameter("searchName").isEmpty()) {
-                                        filas = nat.getAll();
+                                        filas = nat.showAll();
                                     } else {
                                         
-                                        nat.setNombre(name);
+                                        nat.setName(name);
                                         //filas = nat.showSearch();
                                     }
                                 } else {
-                                    filas = nat.getAll();
+                                    filas = nat.showAll();
                                 }
                             
                                 while (filas.next()) {
                                    
                                     out.println("<tr>");
-                                    out.println("<td>" + filas.getString("pais_id") + "</td>");
-                                    out.println("<td>" + filas.getString("nombre") + "</td>");
-                                    out.println("<td>"+ filas.getString("creador")+"</td>");
+                                    out.println("<td>" + filas.getString("city_id") + "</td>");
+                                    out.println("<td>" + filas.getString("name") + "</td>");
+                                    
                                     out.println("<td>");
-                                    out.println("<a href='../../ServNation?delete=" + filas.getString("pais_id") + "' class='btn btn-danger btn-xs'>Eliminar</a>");
-                                    out.println("<a href='edit.jsp?edit=" + filas.getString("pais_id") + "' class='btn btn-primary btn-xs'>Editar</a>");
+                                    out.println("<a href='../../ServCity?delete=" + filas.getString("city_id") + "' class='btn btn-danger btn-xs'>Eliminar</a>");
+                                    out.println("<a href='edit.jsp?edit=" + filas.getString("city_id") + "' class='btn btn-primary btn-xs'>Editar</a>");
                                     out.println("</td>");
 
                                     out.println("</tr>");

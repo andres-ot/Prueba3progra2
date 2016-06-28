@@ -20,6 +20,30 @@
         <servlet-name>verifyLogin</servlet-name>
         <servlet-class>verifyLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServCountr</servlet-name>
+        <servlet-class>ServCountr</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServCity</servlet-name>
+        <servlet-class>ServCity</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SBook</servlet-name>
+        <servlet-class>SBook</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SCity</servlet-name>
+        <servlet-class>SCity</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SCountry</servlet-name>
+        <servlet-class>SCountry</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SNation</servlet-name>
+        <servlet-class>SNation</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServUser</servlet-name>
         <url-pattern>/ServUser</url-pattern>
@@ -39,6 +63,30 @@
     <servlet-mapping>
         <servlet-name>verifyLogin</servlet-name>
         <url-pattern>/verifyLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServCountr</servlet-name>
+        <url-pattern>/ServCountr</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServCity</servlet-name>
+        <url-pattern>/ServCity</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SBook</servlet-name>
+        <url-pattern>/SBook</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SCity</servlet-name>
+        <url-pattern>/SCity</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SCountry</servlet-name>
+        <url-pattern>/SCountry</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SNation</servlet-name>
+        <url-pattern>/SNation</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

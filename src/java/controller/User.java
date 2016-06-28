@@ -14,7 +14,15 @@ public class User {
         con = new Connect();
     }
 
-    private int user_id;
+    private int user_id, city_id;
+
+    public int getCity_id() {
+        return city_id;
+    }
+
+    public void setCity_id(int city_id) {
+        this.city_id = city_id;
+    }
     private String user, password, birth_date, state, sqlsent;
 
     public String getSqlsent() {
@@ -81,7 +89,7 @@ public class User {
     }
 
     public void newElement() {
-        con.setInsert("INSERT into users(user,password,birth_date,state) VALUES('" + this.user + "','" + this.password + "','" + this.birth_date + "', 1)");
+        con.setInsert("INSERT into users(user,password,birth_date,state,city_id) VALUES('" + this.user + "','" + this.password + "','" + this.birth_date + "', 1, '"+this.city_id+"')");
     }
 
     public void delElement() {
@@ -89,7 +97,7 @@ public class User {
     }
 
     public void updElement() {
-        con.setInsert("UPDATE users set user='" + this.user + "', password='" + this.password + "', birth_date='" + this.birth_date + "' where user_id='" + this.user_id + "'");
+        con.setInsert("UPDATE users set user='" + this.user + "', password='" + this.password + "', birth_date='" + this.birth_date + "', city_id='"+this.city_id+"' where user_id='" + this.user_id + "'");
     }
 
     public ResultSet showAll() {

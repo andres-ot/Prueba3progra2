@@ -32,3 +32,16 @@ create table nationalities (
 	name varchar(20),
 	state tinyint(1)
 );
+create table countries(
+        country_id int(10) primary key not null auto_increment,
+        name varchar(20),
+        created_by int(10),
+        state tinyint(1)
+);
+
+create table cities(
+        city_id int(10) primary key not null auto_increment,
+        name varchar(20),
+        country_id int(10),
+        state tinyint(1)
+);
