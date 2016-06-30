@@ -82,6 +82,22 @@
                                 </span>
                             </div>
                         </div>
+                                
+                        <div class="form-group">
+                            <caption>Pais</caption>
+                            <select name="pais" class="form-control" id="pais">
+                                
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <caption>Ciudad</caption>
+                            <select name="ciudad" class="form-control" id="ciudad" x-data-city-id="<% out.println("" + filas.getString("city_id")); %>">
+                                
+                            </select>
+                        </div>
+                                
+                                
 
                         <div class="form-group">
                             <caption>Contraseña</caption>
@@ -109,6 +125,49 @@
                     format: 'YYYY-MM-DD'
                 });
             });
+            
+            var ciudad = "";
+            var idCiudad = $("#ciudad").attr('x-data-city-id');
+            console.log(idCiudad);
+            
+            // pedir info de la ciudad
+            $.get('/Prueba3progra2/api?modulo=ciudades&id_ciudad='+idCiudad, function(data){
+                ciudad = data;
+            }).done(function(data){
+                city = data[0];
+                $.get("/Prueba3progra2/api?modulo=paises", function (data) {
+                    $.each(data, function (i, v) {
+                        if ( v.country_id == city.country_id ) {
+                            $("#pais").append("<option value='" + v.country_id + "' selected >" + v.name + "</option>")
+                        } else {
+                            $("#pais").append("<option value='" + v.country_id + "'>" + v.name + "</option>")
+                        } 
+                    });
+                });
+                
+                $.get("/Prueba3progra2/api?modulo=ciudades&id_pais="+city.country_id, function(data){
+                   $.each(data, function (i, v) {
+                       if( city.city_id==v.city_id ) {
+                            $("#ciudad").append("<option value='" + v.city_id + "' selected>" + v.name + "</option>");
+                       } else {
+                            $("#ciudad").append("<option value='" + v.city_id + "'>" + v.name + "</option>");
+
+                       }
+                    }); 
+                });
+            });
+            
+            $("#pais").change(function(){
+               var idPais = $(this).val();
+               $("#ciudad").empty();
+               $.get("/Prueba3progra2/api?modulo=ciudades&id_pais="+idPais, function(data){
+                   $.each(data, function (i, v) {
+                        $("#ciudad").append("<option value='" + v.city_id + "'>" + v.name + "</option>");
+                    }); 
+               });
+            });
+ 
+            
         </script>
     </body>
 </html>

@@ -38,6 +38,9 @@ public class ServUser extends HttpServlet {
                 String username = request.getParameter("username");
                 String bdate = request.getParameter("birth_date");
                 String passwd = request.getParameter("password");
+                int idCiudad = Integer.parseInt(request.getParameter("ciudad"));
+                
+                usr.setCity_id(idCiudad);
                 usr.setUser(username);
                 usr.setBirth_date(bdate);
                 usr.setPassword(passwd);

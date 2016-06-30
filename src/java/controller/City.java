@@ -72,6 +72,14 @@ public class City {
         return rs;
 
     }
+    
+    public ResultSet getOne() {
+        con = new Connect();
+        con.setConsult("select * from cities where city_id="+this.getCity_id());
+        ResultSet rs = con.getResult();
+        return rs;
+
+    }
 
     public ResultSet showAllFrom(int pais_id) {
         con = new Connect();

@@ -71,6 +71,26 @@ public class Api extends HttpServlet {
                 
                 if ( idCiudad != null ) {
                     // devolvemos la ciudad con el id ciudad
+                    City ciudad = new City();
+                    ciudad.setCity_id(Integer.parseInt(idCiudad));
+                    ResultSet fila = ciudad.getOne();
+                    
+                    try {
+
+                       while ( fila.next() ) {
+                           City c = new City();
+                           c.setName(fila.getString("name"));
+                           c.setCity_id(fila.getInt("city_id"));
+                           c.setCountry_id(fila.getInt("country_id"));
+                           c.setState(fila.getInt("state"));
+
+                           lista.add(c);
+                       } 
+
+                    } catch ( Exception ex ) {
+
+                    }
+                    
                 }
                 
                 else if ( idPais != null ) {
