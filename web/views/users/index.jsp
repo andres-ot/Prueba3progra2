@@ -71,6 +71,7 @@
                         <th>ID</th>
                         <th>Nombre de Usuario</th>
                         <th>Fecha de Nacimiento</th>
+                        <th>Ciudad</th>
                         <th>Acciones</th>
                         </thead>
 

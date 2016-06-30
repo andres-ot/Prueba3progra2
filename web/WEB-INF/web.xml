@@ -44,6 +44,10 @@
         <servlet-name>SNation</servlet-name>
         <servlet-class>SNation</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Api</servlet-name>
+        <servlet-class>Api</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServUser</servlet-name>
         <url-pattern>/ServUser</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>SNation</servlet-name>
         <url-pattern>/SNation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Api</servlet-name>
+        <url-pattern>/api</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

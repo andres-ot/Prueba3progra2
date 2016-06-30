@@ -73,7 +73,7 @@
                         <div class="form-group">
                             <caption>Pais</caption>
                             <select id="pais" name="pais" class="form-control">
-                                
+                                <option>Seleccione un pais...</option>
                             </select>
                         </div>
                         
@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="/Prueba3progra2/assets/js/jquery-2.2.4.min.js"></script>
+        <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
         <script type="text/javascript" src="/Prueba3progra2/assets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/Prueba3progra2/assets/js/moment-with-locales.min.js"></script>
         <script type="text/javascript" src="/Prueba3progra2/assets/js/bootstrap-datetimepicker.min.js"></script>
@@ -103,6 +103,26 @@
                     locale: 'es',
                     format: 'YYYY-MM-DD'
                 });
+            });
+            
+            $(function() {
+               $.get('/Prueba3progra2/api?modulo=paises', function(data){
+                   $.each(data, function(i,v){
+                       $("#pais").append("<option value='"+v.country_id+"'>"+v.name+"</option>");
+                   });
+               });
+            });
+            
+            $(function(){
+               $("#pais").change(function(){
+                   var id_pais = $("#pais").val();
+                   $("#ciudad").empty();
+                   $.get("/Prueba3progra2/api?modulo=ciudades&id_pais="+id_pais, function(data){
+                      $.each(data, function(i,v){
+                        $("#ciudad").append("<option value='"+v.city_id+"'>"+v.name+"</option>")  
+                      });
+                   });
+               });
             });
         </script>
 

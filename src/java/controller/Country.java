@@ -13,15 +13,12 @@ import model.Connect;
  * @author fabian
  */
 public class Country {
+    
     private Connect con;
   
     private int country_id, created_by;
     private String name, state;
     
-    public Country(){
-        con = new Connect();
-    }
-
     public int getCountry_id() {
         return country_id;
     }
@@ -57,14 +54,17 @@ public class Country {
     
     
     public void newElement(){
+        con = new Connect();
         con.setInsert("INSERT into countries(name,state) values('"+this.name+"',1)");
     }
     
     public void delElement(){
+       con = new Connect();
        con.setInsert("UPDATE countries set state=0 where country_id="+this.country_id+"");
     }
     
     public void updElement(){
+        con = new Connect();
         con.setInsert("UPDATE countries set name='"+this.name+"' where country_id="+this.country_id+"");
     }
     

@@ -6,10 +6,11 @@
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import controller.City;
+import controller.Country;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,9 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author andres
+ * @author fabian
  */
-public class SCity extends HttpServlet {
+public class Api extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,67 +36,81 @@ public class SCity extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String modulo = request.getParameter("modulo");
+            /* TODO output your page here. You may use following sample code. */
+            
             ArrayList lista = new ArrayList();
+            String modulo = request.getParameter("modulo");
+            String idCiudad = request.getParameter("id_ciudad");
+            String idPais = request.getParameter("id_pais");
             
-            if ( modulo.equals("responsables") ) {
+            Country pais = new Country();
+            // Paises
+            
+            if ( modulo.equals("paises") ) {    
                 
-                Responsable serv = new Responsable();
-                ResultSet s = serv.getAll();
-
+                ResultSet fila = pais.showAll();
                 try {
-                    while( s.next() ) {
-                        int unidad_id = Integer.parseInt(request.getParameter("unidad_id") );
-                        if ( s.getInt("unidad_id") == unidad_id ){
-                           Responsable arrSer = new Responsable();
-                            arrSer.setResponsable_id(s.getInt("reponsable_id"));
-                            arrSer.setUnidad_id(s.getInt("unidad_id"));
-                            arrSer.setNombre(s.getString("nombre"));
-                            arrSer.setEstado(s.getString("estado"));
-                            lista.add(arrSer); 
-                        }
-                        
-                    }
-                } catch (SQLException ex) {
-                    out.println(ex);
+
+                   while ( fila.next() ) {
+                       Country country = new Country();
+                       country.setName(fila.getString("name"));
+                       country.setCountry_id(fila.getInt("country_id"));
+
+                       lista.add(country);
+                   } 
+
+                } catch ( Exception ex ) {
+
                 }
             }
             
-            if ( modulo.equals("unidades") ) {
-                Unidad serv = new Unidad();
-                ResultSet s = serv.getAll();
-
-                try {
-                    while( s.next() ) {
-                        int servicio_id = Integer.parseInt(request.getParameter("servicio_id"));
-                        if ( s.getInt("servicio_id") == servicio_id ) {
-                            Unidad arrSer = new Unidad();
-                            arrSer.setUnidad_id(s.getInt("unidad_id"));
-                            arrSer.setNombre(s.getString("nombre"));
-                            arrSer.setEstado(s.getString("estado"));
-                            arrSer.setServicio_id(s.getInt("servicio_id"));
-                            lista.add(arrSer);
-                        }
-                    }
-                } catch (SQLException ex) {
-                    out.println(ex);
-                }
-            }
             
-            if ( modulo.equals("servicios") ) {
-                Servicio serv = new Servicio();
-                ResultSet s = serv.getAll();
+            // Ciudades
+            
+            if ( modulo.equals("ciudades") ) {
+                
+                if ( idCiudad != null ) {
+                    // devolvemos la ciudad con el id ciudad
+                }
+                
+                else if ( idPais != null ) {
+                    // devolvemos las ciudades con el pais al que pertenece
+                    City ciudad = new City();
+                    ResultSet fila = ciudad.showAllFrom(Integer.parseInt(idPais));
+                    try {
 
-                try {
-                    while( s.next() ) {
-                        Servicio arrSer = new Servicio();
-                        arrSer.setServicio_id(s.getInt("servicio_id"));
-                        arrSer.setNombre(s.getString("nombre"));
-                        arrSer.setEstado(s.getString("estado"));
-                        lista.add(arrSer);
+                       while ( fila.next() ) {
+                           City c = new City();
+                           c.setName(fila.getString("name"));
+                           c.setCity_id(fila.getInt("city_id"));
+                           c.setCountry_id(fila.getInt("country_id"));
+                           c.setState(fila.getInt("state"));
+
+                           lista.add(c);
+                       } 
+
+                    } catch ( Exception ex ) {
+
                     }
-                } catch (SQLException ex) {
-                    out.println(ex);
+                }
+                
+                else {
+                    City ciudad = new City();
+                    ResultSet fila = ciudad.showAll();
+                    try {
+
+                       while ( fila.next() ) {
+                           City c = new City();
+                           c.setName(fila.getString("name"));
+                           c.setCity_id(fila.getInt("city_id"));
+                           c.setCountry_id(fila.getInt("country_id"));
+                           c.setState(fila.getInt("state"));
+                           lista.add(c);
+                       } 
+
+                    } catch ( Exception ex ) {
+
+                    }
                 }
             }
             
@@ -103,9 +118,10 @@ public class SCity extends HttpServlet {
             String json = gson.toJson(lista);
             response.setContentType("application/json;charset=UTF-8");
             out.write(json);
+     
         }
-        
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

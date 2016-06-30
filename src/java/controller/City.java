@@ -17,11 +17,7 @@ public class City {
     private int city_id, country_id, state;
     private String name;
     private Connect con;
-    
-    public City(){
-        con= new Connect();
-    }
-    
+        
     public int getCity_id() {
         return city_id;
     }
@@ -55,20 +51,31 @@ public class City {
     }
     
     public void newElement(){
+        con = new Connect();
         con.setInsert("INSERT into cities(name, country_id, state) values('"+this.name+",'"+this.country_id+"',1)");
     }
     
     public void delElement(){
+       con = new Connect();
        con.setInsert("UPDATE cities set state=0 where city_id="+this.city_id+"");
     }
     
     public void updElement(){
+        con = new Connect();
         con.setInsert("UPDATE cities set name='"+this.name+"', country_id='"+this.country_id+"' where city_id="+this.city_id+"");
     }
     
     public ResultSet showAll() {
         con = new Connect();
-        con.setConsult("select p.name, p.country_id, p.city_id, p.state, u.user as creador from cities as p left join countries as c on c.country_id=p.country_id");
+        con.setConsult("select * from cities");
+        ResultSet rs=con.getResult();
+        return rs;
+        
+    }
+    
+    public ResultSet showAllFrom(int pais_id) {
+        con = new Connect();
+        con.setConsult("select * from cities where country_id = "+pais_id);
         ResultSet rs=con.getResult();
         return rs;
         
