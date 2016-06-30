@@ -6,7 +6,6 @@
 
 <%@page import="controller.Country"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="controller.Pais"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,7 +36,9 @@
             <li><a href="../users/index.jsp">Usuarios</a></li>
             <li><a href="../books/index.jsp">Libros</a></li>
             <li><a href="../authors/index.jsp">Autores</a></li>
-            <li><a href="index.jsp">Nacionalidades</a></li>
+            <li><a href="../nationalities/index.jsp">Nacionalidades</a></li>
+            <li><a href="index.jsp">Paises</a></li>
+            <li><a href="../cities/index.jsp">Ciudades</a></li>
             
           </ul>
         </div><!--/.nav-collapse -->
@@ -49,7 +50,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>Paises en el sistema
-                    <a href="crear.jsp" class="btn btn-success pull-right">Crear País</a> </h2>
+                    <a href="new.jsp" class="btn btn-success pull-right">Crear País</a> </h2>
                 <hr>
             </div>
             

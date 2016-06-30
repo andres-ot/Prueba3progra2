@@ -70,7 +70,7 @@ public class Country {
     
     public ResultSet showAll() {
         con = new Connect();
-        con.setConsult("select p.name, p.country_id, p.state, u.user as createdby from countries as p left join users as u on u.user_id=p.created_by");
+        con.setConsult("select p.name, p.country_id, p.state, u.user as createdby from countries as p left join users as u on u.user_id=p.created_by where p.state=1");
         ResultSet rs=con.getResult();
         return rs;
         
