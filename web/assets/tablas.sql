@@ -3,6 +3,7 @@ create table users (
 	user varchar(20),
 	password varchar(20),
 	birth_date date,
+        city_id int(10),
 	state tinyint(1)
 );
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<web-app>
     <servlet>
         <servlet-name>ServUser</servlet-name>
         <servlet-class>ServUser</servlet-class>
@@ -27,22 +27,6 @@
     <servlet>
         <servlet-name>ServCity</servlet-name>
         <servlet-class>ServCity</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SBook</servlet-name>
-        <servlet-class>SBook</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SCity</servlet-name>
-        <servlet-class>SCity</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SCountry</servlet-name>
-        <servlet-class>SCountry</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SNation</servlet-name>
-        <servlet-class>SNation</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Api</servlet-name>
@@ -77,28 +61,7 @@
         <url-pattern>/ServCity</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SBook</servlet-name>
-        <url-pattern>/SBook</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SCity</servlet-name>
-        <url-pattern>/SCity</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SCountry</servlet-name>
-        <url-pattern>/SCountry</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SNation</servlet-name>
-        <url-pattern>/SNation</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>Api</servlet-name>
         <url-pattern>/api</url-pattern>
     </servlet-mapping>
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
 </web-app>

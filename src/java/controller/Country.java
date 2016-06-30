@@ -55,7 +55,7 @@ public class Country {
     
     public void newElement(){
         con = new Connect();
-        con.setInsert("INSERT into countries(name,state) values('"+this.name+"',1)");
+        con.setInsert("INSERT into countries(name,created_by,state) values('"+this.name+"','"+this.created_by+"',1)");
     }
     
     public void delElement(){

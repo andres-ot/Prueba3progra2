@@ -18,7 +18,7 @@ public class Connect {
 
         String driver = "com.mysql.jdbc.Driver";
         String user = "root";
-        String pass = "toor";
+        String pass = "";
         String url = "jdbc:mysql://localhost:3306/prueba3";
         try {
             Class.forName(driver);

@@ -41,7 +41,7 @@
         <div class="container">
         
         <div class="row">
-          
+            
             <div class="col-md-4 col-md-push-4">
                 <h1>Agregar pais</h1>
                 <hr/>
@@ -49,6 +49,9 @@
                     <div class="form-group">
                          <caption>Nombre</caption>
                          <input type="text" name="cname" class="form-control" >
+                         <input type="text" readonly="true" name="createdby" class="form-control" value="<%out.println(session.getAttribute("user_id"));%>">
+                         
+                             
                     </div>
 
 

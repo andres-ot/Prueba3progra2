@@ -53,8 +53,9 @@ public class ServCountr extends HttpServlet {
                 response.sendRedirect("views/countries/index.jsp");
             } else {
                 String cname = request.getParameter("cname");
-
+                int cby = Integer.parseInt(request.getParameter("createdby"));
                 con.setName(cname);
+                con.setCreated_by(cby);
 
                 con.newElement();
 
