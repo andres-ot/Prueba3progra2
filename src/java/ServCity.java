@@ -42,19 +42,21 @@ public class ServCity extends HttpServlet {
             } else if (request.getParameter("edit") != null) {
 
                 int id = Integer.parseInt(request.getParameter("id"));
-                String ciname = request.getParameter("ciname");
+                String ciname = request.getParameter("citname");
+                int countryid = Integer.parseInt(request.getParameter("countid"));
 
-               cit.setName(ciname);
+                cit.setName(ciname);
+                cit.setCountry_id(countryid);
 
                 cit.setCity_id(id);
                 cit.updElement();
 
                 response.sendRedirect("views/cities/index.jsp");
             } else {
-                String natname = request.getParameter("ciname");
-                int count_id = Integer.parseInt(request.getParameter("country_id"));
+                String cname = request.getParameter("citname");
+                int count_id = Integer.parseInt(request.getParameter("countid"));
 
-                cit.setName(natname);
+                cit.setName(cname);
                 cit.setCountry_id(count_id);
                 cit.newElement();
 

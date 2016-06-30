@@ -17,7 +17,7 @@ public class City {
     private int city_id, country_id, state;
     private String name;
     private Connect con;
-        
+
     public int getCity_id() {
         return city_id;
     }
@@ -49,35 +49,35 @@ public class City {
     public void setName(String name) {
         this.name = name;
     }
-    
-    public void newElement(){
+
+    public void newElement() {
         con = new Connect();
-        con.setInsert("INSERT into cities(name, country_id, state) values('"+this.name+",'"+this.country_id+"',1)");
+        con.setInsert("INSERT into cities(name,country_id,state) values('"+this.name+"','"+this.country_id+"',1)");
     }
-    
-    public void delElement(){
-       con = new Connect();
-       con.setInsert("UPDATE cities set state=0 where city_id="+this.city_id+"");
-    }
-    
-    public void updElement(){
+
+    public void delElement() {
         con = new Connect();
-        con.setInsert("UPDATE cities set name='"+this.name+"', country_id='"+this.country_id+"' where city_id="+this.city_id+"");
+        con.setInsert("UPDATE cities set state=0 where city_id=" + this.city_id + "");
     }
-    
+
+    public void updElement() {
+        con = new Connect();
+        con.setInsert("UPDATE cities set name='" + this.name + "', country_id='" + this.country_id + "' where city_id=" + this.city_id + "");
+    }
+
     public ResultSet showAll() {
         con = new Connect();
-        con.setConsult("select * from cities");
-        ResultSet rs=con.getResult();
+        con.setConsult("select * from cities where state=1");
+        ResultSet rs = con.getResult();
         return rs;
-        
+
     }
-    
+
     public ResultSet showAllFrom(int pais_id) {
         con = new Connect();
-        con.setConsult("select * from cities where country_id = "+pais_id);
-        ResultSet rs=con.getResult();
+        con.setConsult("select * from cities where country_id = " + pais_id);
+        ResultSet rs = con.getResult();
         return rs;
-        
+
     }
 }

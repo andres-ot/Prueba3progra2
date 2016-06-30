@@ -5,9 +5,7 @@
 --%>
 
 <%@page import="controller.City"%>
-
 <%@page import="java.sql.ResultSet"%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,7 +36,9 @@
             <li><a href="../users/index.jsp">Usuarios</a></li>
             <li><a href="../books/index.jsp">Libros</a></li>
             <li><a href="../authors/index.jsp">Autores</a></li>
-            <li><a href="index.jsp">Nacionalidades</a></li>
+            <li><a href="../nationalities/index.jsp">Nacionalidades</a></li>
+            <li><a href="../countries/index.jsp">Paises</a></li>
+            <li><a href="index.jsp">Ciudades</a></li>
             
           </ul>
         </div><!--/.nav-collapse -->
@@ -49,8 +49,8 @@
         
         <div class="row">
             <div class="col-md-12">
-                <h2>Paises en el sistema
-                    <a href="crear.jsp" class="btn btn-success pull-right">Crear País</a> </h2>
+                <h2>Ciudades en el sistema
+                    <a href="new.jsp" class="btn btn-success pull-right">Crear Ciudad</a> </h2>
                 <hr>
             </div>
             
@@ -59,12 +59,12 @@
                     <thead>
                         <th>ID</th>
                         <th>Nombre</th>
-                        <th>Creado por</th>
+                        <th>Pais</th>
                         <th>Acciones</th>
                     </thead>
                     <tbody>
                          <%
-                                City nat = new City();
+                                City nat=new City();
                                 ResultSet filas = null;
                                 String name = request.getParameter("searchName");
 
@@ -85,7 +85,8 @@
                                     out.println("<tr>");
                                     out.println("<td>" + filas.getString("city_id") + "</td>");
                                     out.println("<td>" + filas.getString("name") + "</td>");
-                                    
+                                    out.println("<td>"+ filas.getString("country_id")+"</td>");
+                                    //out.println("<td>"+ filas.getString("created_by")+"</td>");
                                     out.println("<td>");
                                     out.println("<a href='../../ServCity?delete=" + filas.getString("city_id") + "' class='btn btn-danger btn-xs'>Eliminar</a>");
                                     out.println("<a href='edit.jsp?edit=" + filas.getString("city_id") + "' class='btn btn-primary btn-xs'>Editar</a>");
