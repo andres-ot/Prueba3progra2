@@ -46,12 +46,17 @@
                 <h1>Agregar Ciudad</h1>
                 <hr/>
                 <form action="../../ServCity" method="post">
+                    
                     <div class="form-group">
-                         <caption>Nombre</caption>
-                         <input type="text" name="citname" class="form-control" >
-                         
-                         <caption>Pais</caption>
-                         <input type="text" name="countid" class="form-control" >
+                        <caption>Nombre</caption>
+                        <input type="text" name="citname" class="form-control" >
+                    </div>
+                    
+                    <div class="form-group">
+                        <caption>Pais</caption>
+                        <select id="pais" name="countid" class="form-control">
+                            <option>Seleccione un pais...</option>
+                        </select>
                     </div>
 
 
@@ -63,7 +68,17 @@
         </div>
     </div>
         
-        <script type="text/javascript" src="assets/js/jquery-2.2.4.min.js"></script>
+        <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
         <script type="text/javascript" src="assets/bootstrap.min.js"></script>
+        
+        <script type="text/javascript">
+            $(function () {
+                $.get('/Prueba3progra2/api?modulo=paises', function (data) {
+                    $.each(data, function (i, v) {
+                        $("#pais").append("<option value='" + v.country_id + "'>" + v.name + "</option>");
+                    });
+                });
+            });
+        </script>
     </body>
 </html>

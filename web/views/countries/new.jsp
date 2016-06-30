@@ -49,7 +49,7 @@
                     <div class="form-group">
                          <caption>Nombre</caption>
                          <input type="text" name="cname" class="form-control" >
-                         <input type="text" readonly="true" name="createdby" class="form-control" value="<%out.println(session.getAttribute("user_id"));%>">
+                         <input type="hidden" name="createdby" class="form-control" value="<%out.println(session.getAttribute("user_id"));%>">
                          
                              
                     </div>

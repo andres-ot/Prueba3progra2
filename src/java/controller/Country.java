@@ -16,8 +16,8 @@ public class Country {
     
     private Connect con;
   
-    private int country_id, created_by;
-    private String name, state;
+    private int country_id;
+    private String name, state,  created_by;
     
     public int getCountry_id() {
         return country_id;
@@ -27,11 +27,11 @@ public class Country {
         this.country_id = country_id;
     }
 
-    public int getCreated_by() {
+    public String getCreated_by() {
         return created_by;
     }
 
-    public void setCreated_by(int created_by) {
+    public void setCreated_by(String created_by) {
         this.created_by = created_by;
     }
 
@@ -55,7 +55,7 @@ public class Country {
     
     public void newElement(){
         con = new Connect();
-        con.setInsert("INSERT into countries(name,created_by,state) values('"+this.name+"','"+this.created_by+"',1)");
+        con.setInsert("INSERT into countries(name,created_by,state) values('"+this.name+"', "+this.created_by+",1)");
     }
     
     public void delElement(){
