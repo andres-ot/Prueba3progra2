@@ -34,6 +34,8 @@
                             <li><a href="../books/index.jsp">Libros</a></li>
                             <li><a href="../authors/index.jsp">Autores</a></li>
                             <li><a href="index.jsp">Nacionalidades</a></li>
+                            <li><a href="../cities/index.jsp">Ciudades</a></li>
+                            <li><a href="../countries/index.jsp">Paises</a></li>
 
                         </ul>
                     </div><!--/.nav-collapse -->
@@ -74,7 +76,7 @@
                         </thead>
 
                         <tbody>
-                             <%
+                            <%
                                 Nationality nat = new Nationality();
                                 ResultSet filas;
                                 String name = request.getParameter("searchName");
@@ -90,7 +92,7 @@
                                 } else {
                                     filas = nat.showAll();
                                 }
-                            
+
                                 while (filas.next()) {
                                     out.println("<tr>");
                                     out.println("<td>" + filas.getString("nation_id") + "</td>");

@@ -37,6 +37,8 @@
                         <li><a href="../books/index.jsp">Libros</a></li>
                         <li><a href="../authors/index.jsp">Autores</a></li>
                         <li><a href="../nationalities/index.jsp">Nacionalidades</a></li>
+                        <li><a href="../cities/index.jsp">Ciudades</a></li>
+                        <li><a href="../countries/index.jsp">Paises</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -69,18 +71,18 @@
                             <caption>Contraseña</caption>
                             <input type="text" name="password" class="form-control" >
                         </div>
-                        
+
                         <div class="form-group">
                             <caption>Pais</caption>
                             <select id="pais" name="pais" class="form-control">
                                 <option>Seleccione un pais...</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <caption>Ciudad</caption>
                             <select id="ciudad" name="ciudad" class="form-control">
-                                
+
                             </select>
                         </div>
 
@@ -104,25 +106,25 @@
                     format: 'YYYY-MM-DD'
                 });
             });
-            
-            $(function() {
-               $.get('/Prueba3progra2/api?modulo=paises', function(data){
-                   $.each(data, function(i,v){
-                       $("#pais").append("<option value='"+v.country_id+"'>"+v.name+"</option>");
-                   });
-               });
+
+            $(function () {
+                $.get('/Prueba3progra2/api?modulo=paises', function (data) {
+                    $.each(data, function (i, v) {
+                        $("#pais").append("<option value='" + v.country_id + "'>" + v.name + "</option>");
+                    });
+                });
             });
-            
-            $(function(){
-               $("#pais").change(function(){
-                   var id_pais = $("#pais").val();
-                   $("#ciudad").empty();
-                   $.get("/Prueba3progra2/api?modulo=ciudades&id_pais="+id_pais, function(data){
-                      $.each(data, function(i,v){
-                        $("#ciudad").append("<option value='"+v.city_id+"'>"+v.name+"</option>")  
-                      });
-                   });
-               });
+
+            $(function () {
+                $("#pais").change(function () {
+                    var id_pais = $("#pais").val();
+                    $("#ciudad").empty();
+                    $.get("/Prueba3progra2/api?modulo=ciudades&id_pais=" + id_pais, function (data) {
+                        $.each(data, function (i, v) {
+                            $("#ciudad").append("<option value='" + v.city_id + "'>" + v.name + "</option>")
+                        });
+                    });
+                });
             });
         </script>
 

@@ -38,6 +38,8 @@
                         <li><a href="../books/index.jsp">Libros</a></li>
                         <li><a href="../authors/index.jsp">Autores</a></li>
                         <li><a href="../nationalities/index.jsp">Nacionalidades</a></li>
+                        <li><a href="../cities/index.jsp">Ciudades</a></li>
+                        <li><a href="../countries/index.jsp">Paises</a></li>
 
                     </ul>
                 </div><!--/.nav-collapse -->
