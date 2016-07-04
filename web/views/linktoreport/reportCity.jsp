@@ -6,13 +6,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Reporte Lista Autores</title>
+        <title>Reporte Lista Ciudad</title>
     </head>
     <body>
         <%
             try {
                 Connect con = new Connect();
-                File reportFile = new File(application.getRealPath("//views//reports//ReporteAutores.jasper"));
+                File reportFile = new File(application.getRealPath("//views//reports//ReporteCiudad.jasper"));
                 byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), null, con.getConnect());
                 response.setContentType("application/pdf");
                 response.setContentLength(bytes.length);
