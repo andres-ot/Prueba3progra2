@@ -79,7 +79,7 @@
                                     Author auth = new Author();
                                     ResultSet filas = auth.showNations();
                                     while(filas.next()){
-                                        out.println("<option  name='nation_id' value="+filas.getString("nation_id")+">"+filas.getNString("name")+"</option>");
+                                        out.println("<option  name='nation_id' value="+filas.getString("nation_id")+">"+filas.getString("name")+"</option>");
                                     }
                                 %>
                                 <option value="id">Nombre</option>
